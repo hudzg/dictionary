@@ -1,6 +1,7 @@
 import java.util.Map;
 import java.util.Scanner;
 
+ /* coincard*/
 public class DictionaryCommandline extends DictionaryManagement {
     public DictionaryCommandline() {
     }
