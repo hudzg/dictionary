@@ -4,6 +4,7 @@ import java.util.Scanner;
  /* coincard*/
 public class DictionaryCommandline extends DictionaryManagement {
     public DictionaryCommandline() {
+        super();
     }
 
     public void showAllWords() {
@@ -59,7 +60,7 @@ public class DictionaryCommandline extends DictionaryManagement {
             } else if (type == 6) {
                 dictionarySearcher();
             } else if (type == 7) {
-
+                    Game();
             } else if (type == 8) {
 
             } else if (type == 9) {

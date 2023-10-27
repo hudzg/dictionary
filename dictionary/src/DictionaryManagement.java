@@ -1,10 +1,12 @@
+import java.awt.image.ImageProducer;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class DictionaryManagement extends Dictionary {
     public DictionaryManagement() {
+        super();
+
     }
 
     public void insertFromCommandline() {
@@ -73,6 +75,82 @@ public class DictionaryManagement extends Dictionary {
     }
 
     public void dictionarySearcher() {
+        clearScreen();
+        Scanner input = new Scanner(System.in);
+        System.out.println("Bạn nhập từ cần tra cứu đê!!!");
+        String sample = input.nextLine();
+        int len = sample.length();
+
+        int cnt = 0;
+        for(String ii : dictionary.keySet()){
+            if(ii.length() >= len && ii.substring(0, len).equals(sample)){
+                System.out.print(ii + ", ");
+                if(++cnt%10 == 0)  System.out.println("");
+            }
+        }
+        System.out.println("Ấn phím 0 để thoát");
+        while (input.nextInt() != 0){
+
+        }
+    }
+    public void dictionaryExportToFile(){
+
+    }
+    public void Game(){
+        Random rand = new Random();
+        Scanner input = new Scanner(System.in);
+
+        int cnt = 0;
+        List<String> wrds = new ArrayList<>();
+        for(String ii : dictionary.keySet()){
+            if(++cnt > 1000) break;
+            wrds.add(ii);
+        }
+        String sample2 = "ueoaibcdfghxyzlmnopqw";
+        String sample3 = "ABCD";
+        Map<Integer, String> M = new TreeMap<>();
+        M.put(0, "A"); M.put(1, "B");
+        M.put(2, "C"); M.put(3, "D");
+        do{
+            int id = Math.abs(rand.nextInt()) % wrds.size();
+            String word = wrds.get(id);
+            int len = word.length();
+
+            int missed = Math.abs(rand.nextInt()) % len;
+            String ans = word.substring(missed, missed + 1);
+            String sample4 = "";
+            while (sample4.length() < 4) {
+                int x = Math.abs(rand.nextInt()) % sample2.length();
+                boolean ok = !sample2.substring(x, x + 1).equals(ans);
+                for (int i = 0; i < sample4.length(); ++i) {
+                    if (sample2.substring(x, x + 1).equals(sample4.substring(i, i + 1))) ok = false;
+                }
+                if (ok) sample4 += sample2.substring(x, x + 1);
+            }
+
+            for (int i = 0; i < len; ++i) {
+                if (i == missed) System.out.print("_");
+                else System.out.print(word.substring(i, i + 1));
+            }
+            System.out.println("");
+
+            int ans_id = Math.abs(rand.nextInt()) % 4;
+            for (int i = 0; i < 4; ++i) {
+                System.out.print(sample3.substring(i, i + 1) + ": ");
+                if (i == ans_id) System.out.println(ans);
+                else System.out.println(sample4.substring(i, i + 1));
+            }
+            System.out.print("Your choice [A/B/C/D]: ");
+            String players_answer = input.nextLine();
+            if (M.get(ans_id).equals(players_answer)) {
+                System.out.println("Chinh xac !");
+            } else System.out.println("Sai ! " + "\n" + "Answer is: " + M.get(ans_id));
+
+            System.out.println("Bam phim 1 de choi lai, 0 de thoat !");
+            if(input.nextInt() == 0) break;
+            input.nextLine();
+        }
+        while(true);
 
     }
 
