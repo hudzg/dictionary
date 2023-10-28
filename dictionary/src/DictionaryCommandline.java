@@ -62,9 +62,9 @@ public class DictionaryCommandline extends DictionaryManagement {
             } else if (type == 7) {
                     Game();
             } else if (type == 8) {
-
+                dictionaryImportFromFile();
             } else if (type == 9) {
-
+                dictionaryExportToFile();
             } else {
                 System.out.println("Action not supported");
             }
