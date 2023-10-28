@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.TranslateSceneController">
+   <children>
+      <ScrollPane layoutX="795.0" layoutY="195.0" prefHeight="461.0" prefWidth="497.0">
+         <content>
+            <Label fx:id="translateedText" maxWidth="-Infinity" text="Bản dịch">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </content>
+      </ScrollPane>
+      <ScrollPane layoutX="298.0" layoutY="195.0" prefHeight="461.0" prefWidth="497.0">
+         <content>
+            <TextField fx:id="text" onKeyTyped="#translate" prefHeight="25.0" prefWidth="494.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </TextField>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
