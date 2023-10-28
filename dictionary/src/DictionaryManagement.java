@@ -1,6 +1,8 @@
 import java.awt.image.ImageProducer;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 public class DictionaryManagement extends Dictionary {
@@ -92,9 +94,6 @@ public class DictionaryManagement extends Dictionary {
         while (input.nextInt() != 0){
 
         }
-    }
-    public void dictionaryExportToFile(){
-
     }
     public void Game(){
         Random rand = new Random();
@@ -192,6 +191,60 @@ public class DictionaryManagement extends Dictionary {
             System.out.println(target);
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
+        }
+    }
+    public void dictionaryImportFromFile(){
+        try {
+            File file = new File("src/dictionary/addFile.txt");
+
+            Scanner fileInput = new Scanner(file);
+            int n = 1000000;
+            String target = "";
+            String explain = "";
+            while (fileInput.hasNextLine() && n-- > 0) {
+                String data = fileInput.nextLine();
+                System.out.println(data);
+                if (data.isEmpty()) continue;
+                if ('@' == data.charAt(0)) {
+                    if (!target.isEmpty()) {
+                        dictionary.put(target, explain);
+                    }
+                    int idx = data.indexOf('/');
+                    if (idx == -1) {
+                        target = data.substring(1);
+                        explain = "";
+                    }
+                    else {
+                        target = data.substring(1, idx - 1);
+                        explain = data.substring(idx);
+                    }
+                } else {
+                    explain += "\n" + data;
+                }
+            }
+            fileInput.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+        }
+    }
+    public void dictionaryExportToFile(){
+        try {
+            FileWriter destinationFile = new FileWriter("src/dictionary/newFile.txt");
+            String fileContent = "";
+
+           // int cnt = 0;
+            for(String ii : dictionary.keySet()){
+                fileContent += "--------------------- \n";
+                fileContent += ii + " " + dictionary.get(ii) + "\n";
+              //  if(++cnt > 1000) break;
+            }
+            destinationFile.write(fileContent);
+            destinationFile.close();
+
+            System.out.println("Successfully wrote to the file!");
+        } catch (IOException e) {
+            System.out.println("An error occurred !!!");
+            e.printStackTrace();
         }
     }
 }
