@@ -96,13 +96,14 @@ public class DictionaryManagement extends Dictionary {
         }
     }
     public void Game(){
+
         Random rand = new Random();
         Scanner input = new Scanner(System.in);
 
         int cnt = 0;
         List<String> wrds = new ArrayList<>();
         for(String ii : dictionary.keySet()){
-            if(++cnt > 1000) break;
+            if(++cnt > 10000) break;
             wrds.add(ii);
         }
         String sample2 = "ueoaibcdfghxyzlmnopqw";
@@ -113,6 +114,7 @@ public class DictionaryManagement extends Dictionary {
         do{
             int id = Math.abs(rand.nextInt()) % wrds.size();
             String word = wrds.get(id);
+            String meaning = dictionary.get(word);
             int len = word.length();
 
             int missed = Math.abs(rand.nextInt()) % len;
@@ -141,10 +143,11 @@ public class DictionaryManagement extends Dictionary {
             }
             System.out.print("Your choice [A/B/C/D]: ");
             String players_answer = input.nextLine();
+           players_answer = players_answer.toUpperCase();
             if (M.get(ans_id).equals(players_answer)) {
                 System.out.println("Chinh xac !");
             } else System.out.println("Sai ! " + "\n" + "Answer is: " + M.get(ans_id));
-
+            System.out.println("Exlain: " + word + meaning);
             System.out.println("Bam phim 1 de choi lai, 0 de thoat !");
             if(input.nextInt() == 0) break;
             input.nextLine();
