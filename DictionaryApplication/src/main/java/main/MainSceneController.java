@@ -30,7 +30,9 @@ public class MainSceneController implements Initializable {
     private Parent root;
 
     @FXML
-    private AnchorPane menuPane;
+    private AnchorPane shadowPane;
+    @FXML
+    private AnchorPane headerPane;
     @FXML
     private Button searchButton;
     @FXML
@@ -42,7 +44,7 @@ public class MainSceneController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        menuPane.setVisible(false);
+        shadowPane.setVisible(false);
         dashboard.setLayoutX(-200);
         menu.setImage(menuImg);
         searchButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
@@ -53,7 +55,7 @@ public class MainSceneController implements Initializable {
     }
 
     public void setDashboardVisible() {
-        menuPane.setVisible(true);
+        shadowPane.setVisible(true);
 //        dashboard.setLayoutX(0);
         if (dashboard.getLayoutX() >= 0) return;
         TranslateTransition transition = new TranslateTransition();
@@ -61,11 +63,14 @@ public class MainSceneController implements Initializable {
         transition.setByX(200);
         transition.setDuration(Duration.millis(500));
         transition.play();
+        headerPane.toFront();
+        shadowPane.toFront();
+        dashboard.toFront();
 //        dashboard.setLayoutX(0);
     }
 
     public void setDashboardHidden() {
-        menuPane.setVisible(false);
+        shadowPane.setVisible(false);
 //        dashboard.setLayoutX(-200);
 //        if(dashboard.getLayoutX() <= -200) return;
         TranslateTransition transition = new TranslateTransition();
@@ -84,8 +89,15 @@ public class MainSceneController implements Initializable {
         setDashboardHidden();
     }
 
-    public void enterButton() {
-
+    public void removeOthers(ActionEvent event) {
+        for (int i = 0; i < ((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().size(); i++) {
+            if (((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().get(i) != this.dashboard
+                    && ((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().get(i) != shadowPane
+                    && ((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().get(i) != headerPane) {
+                ((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().remove(i);
+                i--;
+            }
+        }
     }
 
     public void clickSearchButton(ActionEvent event) throws IOException {
@@ -113,8 +125,9 @@ public class MainSceneController implements Initializable {
 //        for(int i = 0; i < search.getChildren().size(); i++)
 //            ((AnchorPane)(((Node) (event.getSource())).getScene().getRoot())).getChildren().remove(0);
 
-        while (((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().size() > dashboard.getChildren().size())
-            ((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().remove(0);
+//        while (((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().size() > dashboard.getChildren().size())
+//            ((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().remove(0);
+        removeOthers(event);
 
         while (!search.getChildren().isEmpty())
             ((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().add(0, search.getChildren().get(0));
@@ -141,8 +154,10 @@ public class MainSceneController implements Initializable {
 //        stage.setScene(scene);
 //        stage.show();
 
-        while (((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().size() > dashboard.getChildren().size())
-            ((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().remove(0);
+//        while (((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().size() > dashboard.getChildren().size())
+//            ((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().remove(0);
+
+        removeOthers(event);
 
         while (!game.getChildren().isEmpty())
             ((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().add(0, game.getChildren().get(0));
@@ -161,8 +176,10 @@ public class MainSceneController implements Initializable {
 //        stage.setScene(scene);
 //        stage.show();
 
-        while (((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().size() > dashboard.getChildren().size())
-            ((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().remove(0);
+//        while (((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().size() > dashboard.getChildren().size())
+//            ((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().remove(0);
+
+        removeOthers(event);
 
         while (!translate.getChildren().isEmpty())
             ((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().add(0, translate.getChildren().get(0));
