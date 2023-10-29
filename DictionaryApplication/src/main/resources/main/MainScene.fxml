@@ -2,36 +2,52 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.MainSceneController">
    <children>
-      <Button fx:id="menuButton" mnemonicParsing="false" onAction="#clickMenuButton" text="Menu">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
-      <AnchorPane fx:id="menuPane" layoutY="51.0" onMouseClicked="#clickMenuPaneButton" prefHeight="717.0" prefWidth="1366.0" style="-fx-background-color: rgba(0, 0 ,0, 0.5);" />
+      <AnchorPane prefHeight="51.0" prefWidth="1366.0" style="-fx-background-color: #321b92;">
+         <children>
+            <ImageView fx:id="menu" fitHeight="51.0" fitWidth="56.0" onMouseClicked="#clickMenuButton" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="menuPane" onMouseClicked="#clickMenuPaneButton" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: rgba(0, 0 ,0, 0.5);" />
       <VBox fx:id="dashboard" layoutY="51.0" prefHeight="717.0" prefWidth="200.0">
          <children>
-            <Label alignment="CENTER" prefHeight="74.0" prefWidth="210.0" style="-fx-background-color: #4c00e1;" text="English App" textFill="WHITE">
+            <Label alignment="CENTER" prefHeight="74.0" prefWidth="210.0" style="-fx-background-color: #522da8;" text="English App" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" onAction="#clickSearchButton" prefHeight="62.0" prefWidth="212.0" style="-fx-background-color: #6c07ef;" text="Search" textFill="WHITE">
+            <Button fx:id="searchButton" mnemonicParsing="false" onAction="#clickSearchButton" prefHeight="62.0" prefWidth="212.0" style="-fx-background-color: #683ab7;" text="Search" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickGameButton" prefHeight="62.0" prefWidth="208.0" style="-fx-background-color: #6c07ef;" text="Game" textFill="WHITE">
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickGameButton" prefHeight="62.0" prefWidth="208.0" style="-fx-background-color: #683ab7;" text="Game" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickTranslateButton" prefHeight="62.0" prefWidth="202.0" style="-fx-background-color: #6c07ef;" text="Translate" textFill="WHITE">
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickTranslateButton" prefHeight="62.0" prefWidth="202.0" style="-fx-background-color: #683ab7;" text="Translate" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#clickTranslateButton" prefHeight="62.0" prefWidth="202.0" style="-fx-background-color: #683ab7;" text="Add" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#clickTranslateButton" prefHeight="62.0" prefWidth="202.0" style="-fx-background-color: #683ab7;" text="Remove" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#clickTranslateButton" prefHeight="62.0" prefWidth="202.0" style="-fx-background-color: #683ab7;" text="Modify" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>

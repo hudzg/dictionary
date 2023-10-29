@@ -8,10 +8,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import javax.speech.Central;
@@ -45,9 +43,16 @@ public class SearchController implements Initializable {
     private Label wordLabel;
     @FXML
     private Label meaningLabel;
+    @FXML
+    private Pane wordPane;
+    @FXML
+    private ScrollPane meaningPane;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        listView.setVisible(false);
+        wordPane.setVisible(false);
+        meaningPane.setVisible(false);
         listView.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
@@ -56,8 +61,6 @@ public class SearchController implements Initializable {
 //
                 selectedString = listView.getSelectionModel().getSelectedItem();
                 if (selectedString == null) return;
-                System.out.println(selectedString);
-//
                 display(selectedString, Main.dictionaryManagement.dictionaryLookup(selectedString));
 //                    listView.getItems().clear();
                 listView.setVisible(false);
@@ -94,6 +97,8 @@ public class SearchController implements Initializable {
     }
 
     public void display(String word, String meaning) {
+        wordPane.setVisible(true);
+        meaningPane.setVisible(true);
         wordLabel.setText(word);
         meaningLabel.setText(meaning);
         wordLabel.toFront();
