@@ -25,6 +25,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainSceneController implements Initializable {
+
+    private static final int duration = 300;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -35,6 +37,8 @@ public class MainSceneController implements Initializable {
     private AnchorPane headerPane;
     @FXML
     private Button searchButton;
+    @FXML
+    private Button gameButton;
     @FXML
     private VBox dashboard;
     @FXML
@@ -48,10 +52,24 @@ public class MainSceneController implements Initializable {
         dashboard.setLayoutX(-200);
         menu.setImage(menuImg);
         searchButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
-                e -> searchButton.setOpacity(0.8));
+//                e -> searchButton.setOpacity(0.8));
+                e -> searchButton.setStyle("-fx-background-color: #7f57c2;" +
+                        "-fx-background-radius: 16;"));
 
         searchButton.addEventHandler(MouseEvent.MOUSE_EXITED,
-                e -> searchButton.setOpacity(1));
+//                e -> searchButton.setOpacity(1));
+                e -> searchButton.setStyle("-fx-background-color: #683ab7;" +
+                        "-fx-background-radius: 16;"));
+
+        gameButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
+//                e -> searchButton.setOpacity(0.8));
+                e -> gameButton.setStyle("-fx-background-color: #7f57c2;" +
+                        "-fx-background-radius: 16;"));
+
+        gameButton.addEventHandler(MouseEvent.MOUSE_EXITED,
+//                e -> searchButton.setOpacity(1));
+                e -> gameButton.setStyle("-fx-background-color: #683ab7;" +
+                        "-fx-background-radius: 16;"));
     }
 
     public void setDashboardVisible() {
@@ -61,7 +79,7 @@ public class MainSceneController implements Initializable {
         TranslateTransition transition = new TranslateTransition();
         transition.setNode(dashboard);
         transition.setByX(200);
-        transition.setDuration(Duration.millis(500));
+        transition.setDuration(Duration.millis(duration));
         transition.play();
         headerPane.toFront();
         shadowPane.toFront();
@@ -76,7 +94,7 @@ public class MainSceneController implements Initializable {
         TranslateTransition transition = new TranslateTransition();
         transition.setNode(dashboard);
         transition.setByX(-200);
-        transition.setDuration(Duration.millis(500));
+        transition.setDuration(Duration.millis(duration));
         transition.play();
         dashboard.setLayoutX(-200);
     }

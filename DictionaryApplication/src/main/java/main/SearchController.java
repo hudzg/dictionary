@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -53,6 +54,25 @@ public class SearchController implements Initializable {
         listView.setVisible(false);
         wordPane.setVisible(false);
         meaningPane.setVisible(false);
+        textField.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println("text");
+            if (newValue) {
+                textField.setStyle("-fx-border-color: #673AB7; -fx-border-width: 4px;");
+            }
+        });
+
+        textField.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                textField.setStyle("-fx-border-color: #000000; -fx-border-width: 1px;");
+            }
+        });
+
+        listView.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println("list");
+            if (!newValue) {
+                listView.setVisible(false);
+            }
+        });
         listView.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {

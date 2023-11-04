@@ -2,6 +2,7 @@ package main;
 
 import Dictionary.DictionaryManagement;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -19,6 +20,13 @@ public class Main extends Application {
 //        AnchorPane search = FXMLLoader.load(getClass().getResource("SearchScene.fxml"));
         AnchorPane root = new AnchorPane();
         root.getChildren().addAll(dashboard.getChildren());
+
+        root.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, event -> {
+            Node node = (Node) event.getTarget();
+//            System.out.println(node.getClass());
+            node.requestFocus();
+        });
+
 //        root.getChildren().addAll(search.getChildren());
         Scene scene = new Scene(root, 1366, 768);
         stage.setScene(scene);

@@ -184,10 +184,10 @@ public class DictionaryManagement extends Dictionary {
             File file = new File("src/main/java/Dictionary/dictionary/dictionary.txt");
 
             Scanner fileInput = new Scanner(file);
-            int n = 1000000;
+            int n = 0;
             String target = "";
             String explain = "";
-            while (fileInput.hasNextLine() && n-- > 0) {
+            while (fileInput.hasNextLine()) {
                 String data = fileInput.nextLine();
 //                System.out.println(data);
                 if (data.isEmpty()) continue;
@@ -196,6 +196,7 @@ public class DictionaryManagement extends Dictionary {
 //                    System.out.println(data);
                     if (!target.isEmpty()) {
                         dictionary.put(target, explain);
+                        words[n++] = new Word(target, explain);
                     }
                     int idx = data.indexOf('/');
                     if (idx == -1) {
