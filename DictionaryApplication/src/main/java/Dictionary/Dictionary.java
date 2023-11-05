@@ -4,12 +4,13 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class Dictionary {
-    private Word[] words;
+    protected Word[] words;
 
     protected Map<String, String> dictionary;
 
 
     public Dictionary() {
+        words = new Word[1000000];
         dictionary = new TreeMap<>();
     }
 
