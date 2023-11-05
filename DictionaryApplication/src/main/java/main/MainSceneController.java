@@ -131,7 +131,7 @@ public class MainSceneController implements Initializable {
     public void clickGameButton(ActionEvent event) throws IOException {
         setDashboardHidden();
         AnchorPane dashboard = FXMLLoader.load(getClass().getResource("MainScene.fxml"));
-        AnchorPane game = FXMLLoader.load(getClass().getResource("GameScene.fxml"));
+       AnchorPane game = FXMLLoader.load(getClass().getResource("GameScene.fxml"));
 //        AnchorPane root = new AnchorPane();
 //        root.getChildren().addAll(game.getChildren());
 //        root.getChildren().addAll(dashboard.getChildren());
@@ -160,6 +160,17 @@ public class MainSceneController implements Initializable {
 //        Scene scene = new Scene(root, 1366, 768);
 //        stage.setScene(scene);
 //        stage.show();
+
+        while (((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().size() > dashboard.getChildren().size())
+            ((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().remove(0);
+
+        while (!translate.getChildren().isEmpty())
+            ((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().add(0, translate.getChildren().get(0));
+    }
+    public void clickAddButton(ActionEvent event) throws IOException {
+        setDashboardHidden();
+        AnchorPane dashboard = FXMLLoader.load(getClass().getResource("MainScene.fxml"));
+        AnchorPane translate = FXMLLoader.load(getClass().getResource("AddScene2.fxml"));
 
         while (((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().size() > dashboard.getChildren().size())
             ((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().remove(0);

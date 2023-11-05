@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="addButton" prefHeight="879.0" prefWidth="1196.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.AddWordsController">
+   <children>
+      <TextField fx:id="FieldMeaning" layoutX="598.0" layoutY="151.0" onAction="#GetMeaning" prefHeight="294.0" prefWidth="430.0" />
+      <TextField fx:id="FieldNewWord" layoutX="146.0" layoutY="151.0" onAction="#GetNewWord" prefHeight="294.0" prefWidth="430.0" />
+      <Label fx:id="titleNewWord" alignment="CENTER" layoutX="252.0" layoutY="79.0" prefHeight="39.0" prefWidth="256.0" text="a new word/phrase">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="titleMeaning" alignment="CENTER" layoutX="685.0" layoutY="79.0" prefHeight="39.0" prefWidth="256.0" text="meaning">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+    <AnchorPane layoutX="24.0" layoutY="248.0" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+      <Button layoutX="517.0" layoutY="599.0" mnemonicParsing="false" onAction="#ClickAddButton" prefHeight="72.0" prefWidth="176.0" text="Add">
+         <font>
+            <Font size="39.0" />
+         </font>
+      </Button>
+      <Label fx:id="StatementText" alignment="CENTER" contentDisplay="CENTER" layoutX="354.0" layoutY="490.0" prefHeight="39.0" prefWidth="465.0" />
+   </children>
+</AnchorPane>

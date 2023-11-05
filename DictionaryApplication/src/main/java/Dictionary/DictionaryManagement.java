@@ -111,6 +111,7 @@ public class DictionaryManagement extends Dictionary {
             }
         }
         return stringList;
+
     }
 
     public void dictionaryExportToFile() {
