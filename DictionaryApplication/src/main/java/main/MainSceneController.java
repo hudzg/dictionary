@@ -207,8 +207,7 @@ public class MainSceneController implements Initializable {
         AnchorPane dashboard = FXMLLoader.load(getClass().getResource("MainScene.fxml"));
         AnchorPane translate = FXMLLoader.load(getClass().getResource("AddScene2.fxml"));
 
-        while (((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().size() > dashboard.getChildren().size())
-            ((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().remove(0);
+        removeOthers(event);
 
         while (!translate.getChildren().isEmpty())
             ((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().add(0, translate.getChildren().get(0));
