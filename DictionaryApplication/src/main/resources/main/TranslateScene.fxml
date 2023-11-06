@@ -10,7 +10,7 @@
    <children>
       <ScrollPane layoutX="795.0" layoutY="195.0" prefHeight="461.0" prefWidth="497.0">
          <content>
-            <Label fx:id="translateedText" maxWidth="-Infinity" text="Bản dịch">
+            <Label fx:id="translatedText" maxWidth="-Infinity" text="Bản dịch">
                <font>
                   <Font size="24.0" />
                </font>

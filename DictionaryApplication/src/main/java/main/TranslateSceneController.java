@@ -103,6 +103,7 @@ public class TranslateSceneController {
         // Print translation
         String res1 = normalizeUnicode(translation);
         String ans = normalizeSpace(res1);
+//        System.out.println(ans);
         if(ans.equals("QUERY LENGTH LIMIT EXCEEDED. MAX ALLOWED QUERY : 500 CHARS")) {
             translatedText.setText("Sorry, I can translate up to a maximum of 500 characters per request");
         }
