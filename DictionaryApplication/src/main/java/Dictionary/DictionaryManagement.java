@@ -13,6 +13,9 @@ public class DictionaryManagement extends Dictionary {
         super();
 
     }
+    public void changeMeaning(String words, String Meaning){
+        if(dictionary.containsKey(words))  dictionary.put(words, Meaning);
+    }
 
     public void insertFromCommandline() {
         clearScreen();

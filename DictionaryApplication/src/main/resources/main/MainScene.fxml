@@ -47,7 +47,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#clickTranslateButton" prefHeight="62.0" prefWidth="202.0" style="-fx-background-color: #683ab7;" text="Modify" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#clickModifyButton" prefHeight="62.0" prefWidth="202.0" style="-fx-background-color: #683ab7;" text="Modify" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>

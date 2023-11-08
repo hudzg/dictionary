@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+
     public static DictionaryManagement dictionaryManagement;
 
     @Override
