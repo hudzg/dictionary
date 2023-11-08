@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,7 +25,13 @@ public class ModifyController implements Initializable {
     @FXML
     private TextArea warningTextArea;
     @FXML
+    private TextField askForSureTextArea;
+    @FXML
     private Button okButton;
+    @FXML
+    private Button continueButton;
+    @FXML
+    private Button cancelButton;
 
 
     @Override
@@ -34,6 +41,10 @@ public class ModifyController implements Initializable {
         newMeaningArea.setVisible(true);
         wordArea.setVisible(true);
         warningTextArea.setVisible(false);
+
+        askForSureTextArea.setVisible(false);
+        continueButton.setVisible(false);
+        cancelButton.setVisible(false);
     }
     public void typingWords(KeyEvent event){
         String cur_words = wordArea.getText();
@@ -47,12 +58,25 @@ public class ModifyController implements Initializable {
         warningTextArea.setVisible(true);
     }
     public void ClickOkButton(ActionEvent actionEvent) {
-        String cur_words = wordArea.getText();
-        String new_meaning = newMeaningArea.getText();
-        Main.dictionaryManagement.changeMeaning(cur_words, new_meaning);
-        warningTextArea.setText("Okay");
-        warningTextArea.setVisible(true);
+        askForSureTextArea.setVisible(true);
+        continueButton.setVisible(true);
+        cancelButton.setVisible(true);
+        warningTextArea.setVisible(false);
     }
 
 
+    public void clickCancelButton(ActionEvent actionEvent) {
+        askForSureTextArea.setVisible(false);
+        continueButton.setVisible(false);
+        cancelButton.setVisible(false);
+    }
+
+    public void clickContinueButton(ActionEvent actionEvent) {
+        String cur_words = wordArea.getText();
+        String new_meaning = newMeaningArea.getText();
+        Main.dictionaryManagement.changeMeaning(cur_words, new_meaning);
+        askForSureTextArea.setVisible(false);
+        continueButton.setVisible(false);
+        cancelButton.setVisible(false);
+    }
 }

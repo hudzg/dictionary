@@ -30,6 +30,7 @@ public class Main extends Application {
 
 //        root.getChildren().addAll(search.getChildren());
         Scene scene = new Scene(root, 1366, 768);
+       // scene.getStylesheets().add(getClass().getResource("Modifycss.css").toExternalForm()).
         stage.setScene(scene);
         stage.show();
     }
