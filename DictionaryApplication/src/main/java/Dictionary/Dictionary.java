@@ -18,6 +18,14 @@ public class Dictionary {
         dictionary.put(target, explain);
     }
 
+    public String getTargetAt(int pos){
+        return words[pos].getWordTarget();
+    }
+
+    public String getExplainAt(int pos){
+        return words[pos].getWordExplain();
+    }
+
     public void clearScreen(){
         try{
 
