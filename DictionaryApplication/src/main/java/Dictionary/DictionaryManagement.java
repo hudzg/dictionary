@@ -15,7 +15,7 @@ public class DictionaryManagement extends Dictionary {
       //  tree = new Trie();
     }
     public void changeMeaning(String word, String Meaning){
-        if(dictionary.containsKey(word))  dictionary.put(word, Meaning);
+        dictionary.put(word, Meaning);
      /*   int id = tree.getIndex(word);
         if(id != -1){
             this.words[id].setWordExplain(Meaning);

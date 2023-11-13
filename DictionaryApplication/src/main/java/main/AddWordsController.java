@@ -11,17 +11,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class AddWordsController implements Initializable {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
     @FXML
     private Button addButton;
     @FXML
@@ -34,63 +28,36 @@ public class AddWordsController implements Initializable {
     private Label titleNewWord;
     @FXML
     private Label titleMeaning;
-    @FXML
-    private Label StatementText;
 
 
-    @FXML
-    private TextField askForSureTextArea;
-    @FXML
-    private Button okButton;
-    @FXML
-    private Button cancelButton;
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
-        askForSureTextArea.setVisible(false);
-        okButton.setVisible(false);
-        cancelButton.setVisible(false);
-
         addButton.setVisible(true);
         FieldMeaning.setVisible(true);
         FieldNewWord.setVisible(true);
         titleMeaning.setVisible(true);
         titleNewWord.setVisible(true);
-        StatementText.setVisible(false);
-
-
     }
 
     public void ClickAddButton(ActionEvent actionEvent) {
-        askForSureTextArea.toFront();
-        askForSureTextArea.setVisible(true);
-        okButton.toFront();
-        okButton.setVisible(true);
-        cancelButton.setVisible(true);
-        cancelButton.toFront();
-        StatementText.setVisible(false);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("");
+        alert.setHeaderText("are you sure you want to add ?");
+        //  alert.setContentText("Do you want to save before exiting?: ");
+
+        if(alert.showAndWait().get() == ButtonType.OK){
+            String word = FieldNewWord.getText();
+            String meaning = FieldMeaning.getText();
+
+            /* complete this ........................
+            * call addword function to add
+            * */
+              Main.dictionaryManagement.addWord(word, meaning);
+        }
     }
 
-    public void clickOkButton(ActionEvent actionEvent) {
 
-        String  newWord = FieldNewWord.getText();
-        String  newMeaing = FieldMeaning.getText();
-        if(!newWord.equals("") && !newMeaing.equals(""))  Main.dictionaryManagement.addWord(newWord, newMeaing);
-
-
-
-        addButton.setVisible(true);
-        askForSureTextArea.setVisible(false);
-        okButton.setVisible(false);
-        cancelButton.setVisible(false);
-        StatementText.setText("Great! The addition was successful !");
-        StatementText.setVisible(true);
-    }
-
-    public void clickCancelButton(ActionEvent actionEvent) {
-        askForSureTextArea.setVisible(false);
-        okButton.setVisible(false);
-        cancelButton.setVisible(false);
-        StatementText.setVisible(false);
-    }
 }
