@@ -5,10 +5,12 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -48,6 +50,17 @@ public class GameSceneController implements Initializable {
 //                            System.out.println(gridPane.getChildren().get(i).getClass());
                     }
         }
+        else {
+            for(int i = 0; i < numRow; i++)
+                for(int j = 0; j < numColumn; j++)
+                    if(wordItem[i][j] == lastIdx || wordItem[i][j] == idx) {
+                        Node node =  gridPane.getChildren().get(i * numColumn + j);
+                        AnchorPane anchorPane = (AnchorPane) (node);
+                        Button button = (Button) anchorPane.getChildren().get(0);
+                        button.setBorder(new Border((BorderStroke) null));
+                    }
+        }
+        gridPane.requestFocus();
         lastIdx = flagNum;
     }
 
@@ -68,8 +81,8 @@ public class GameSceneController implements Initializable {
         };
         Random random = new Random();
         for (int i = 0; i < numRow * numColumn / 2; i++) {
-            int idx = random.nextInt(100);
-            while (isExist(idx)) idx = random.nextInt();
+            int idx = random.nextInt(1000) + 1;
+            while (isExist(idx)) idx = random.nextInt(1000) + 1;
             int x = random.nextInt(numRow), y = random.nextInt(numColumn);
             while (wordItem[x][y] != flagNum) {
                 x = random.nextInt(numRow);

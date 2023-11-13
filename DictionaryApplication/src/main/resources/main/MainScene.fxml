@@ -32,22 +32,24 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickTranslateButton" prefHeight="62.0" prefWidth="202.0" style="-fx-background-color: #683ab7;" text="Translate" textFill="WHITE">
+            <Button fx:id="translateButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickTranslateButton" prefHeight="62.0" prefWidth="202.0" style="-fx-background-color: #683ab7;" text="Translate" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#clickAddButton" prefHeight="62.0" prefWidth="202.0" style="-fx-background-color: #683ab7;" text="Add" textFill="WHITE">
+            <Button fx:id="addButton" mnemonicParsing="false" onAction="#clickAddButton" prefHeight="62.0" prefWidth="202.0" style="-fx-background-color: #683ab7;" text="Add" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#clickRemoveButton" prefHeight="62.0" prefWidth="202.0" style="-fx-background-color: #683ab7;" text="Remove" textFill="WHITE">
+
+            <Button fx:id="removeButton" mnemonicParsing="false" onAction="#clickTranslateButton" prefHeight="62.0" prefWidth="202.0" style="-fx-background-color: #683ab7;" text="Remove" textFill="WHITE">
+
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#clickModifyButton" prefHeight="62.0" prefWidth="202.0" style="-fx-background-color: #683ab7;" text="Modify" textFill="WHITE">
+            <Button fx:id="modifyButton" mnemonicParsing="false" onAction="#clickModifyButton" prefHeight="62.0" prefWidth="202.0" style="-fx-background-color: #683ab7;" text="Modify" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>

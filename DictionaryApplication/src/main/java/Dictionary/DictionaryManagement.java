@@ -220,6 +220,9 @@ public class DictionaryManagement extends Dictionary {
                     if (!target.isEmpty()) {
                         dictionary.put(target, explain);
                         words[count_words++] = new Word(target, explain);
+//                        dictionary.put(target, explain);
+//                        words[n++] = new Word(target, explain);
+                        addWord(target, explain);
                     }
                     int idx = data.indexOf('/');
                     if (idx == -1) {
