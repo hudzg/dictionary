@@ -5,17 +5,21 @@ import java.util.TreeMap;
 
 public class Dictionary {
     protected Word[] words;
-
+    protected int count_words;
     protected Map<String, String> dictionary;
 
 
     public Dictionary() {
-        words = new Word[1000000];
+        words = new Word[1000010];
         dictionary = new TreeMap<>();
+        count_words = 0;
     }
 
     public void addWord(String target, String explain) {
         dictionary.put(target, explain);
+    }
+    public Word getWord(int i){
+        return words[i];
     }
 
     public void clearScreen(){

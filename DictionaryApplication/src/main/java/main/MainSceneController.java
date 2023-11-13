@@ -222,4 +222,15 @@ public class MainSceneController implements Initializable {
         while (!translate.getChildren().isEmpty())
             ((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().add(0, translate.getChildren().get(0));
     }
+    public void clickRemoveButton(ActionEvent event) throws IOException {
+        setDashboardHidden();
+        AnchorPane dashboard = FXMLLoader.load(getClass().getResource("MainScene.fxml"));
+        AnchorPane translate = FXMLLoader.load(getClass().getResource("removeScene.fxml"));
+        //AnchorPane translate = FXMLLoader.load(getClass().getResource("nhap.fxml"));
+
+        removeOthers(event);
+
+        while (!translate.getChildren().isEmpty())
+            ((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().add(0, translate.getChildren().get(0));
+    }
 }

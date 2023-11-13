@@ -9,12 +9,19 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class DictionaryManagement extends Dictionary {
+  //  private Trie tree;
     public DictionaryManagement() {
         super();
-
+      //  tree = new Trie();
     }
-    public void changeMeaning(String words, String Meaning){
-        if(dictionary.containsKey(words))  dictionary.put(words, Meaning);
+    public void changeMeaning(String word, String Meaning){
+        if(dictionary.containsKey(word))  dictionary.put(word, Meaning);
+     /*   int id = tree.getIndex(word);
+        if(id != -1){
+            this.words[id].setWordExplain(Meaning);
+        }
+
+      */
     }
 
     public void insertFromCommandline() {
@@ -34,7 +41,16 @@ public class DictionaryManagement extends Dictionary {
 
         }
     }
+    public void removeFromApp(String Word){
+        dictionary.remove(Word);
+       /* int id = tree.getIndex(Word);
+        if(id != -1){
+            tree.removeWord(Word, id);
 
+        }
+
+        */
+    }
     public void removeFromCommandline() {
         clearScreen();
         Scanner input = new Scanner(System.in);
@@ -82,6 +98,7 @@ public class DictionaryManagement extends Dictionary {
 
     public String dictionaryLookup(String s) {
         return dictionary.get(s);
+       // return tree.find(s);
     }
 
     public void dictionarySearcherCommandline() {
@@ -115,6 +132,9 @@ public class DictionaryManagement extends Dictionary {
         }
         return stringList;
 
+
+
+     //   return tree.Searcher(sample);
     }
 
     public void dictionaryExportToFile() {
@@ -188,7 +208,6 @@ public class DictionaryManagement extends Dictionary {
             File file = new File("src/main/java/Dictionary/dictionary/dictionary.txt");
 
             Scanner fileInput = new Scanner(file);
-            int n = 0;
             String target = "";
             String explain = "";
             while (fileInput.hasNextLine()) {
@@ -200,7 +219,7 @@ public class DictionaryManagement extends Dictionary {
 //                    System.out.println(data);
                     if (!target.isEmpty()) {
                         dictionary.put(target, explain);
-                        words[n++] = new Word(target, explain);
+                        words[count_words++] = new Word(target, explain);
                     }
                     int idx = data.indexOf('/');
                     if (idx == -1) {
@@ -217,6 +236,8 @@ public class DictionaryManagement extends Dictionary {
             }
             fileInput.close();
             System.out.println(target);
+
+
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
             System.out.println(e);
