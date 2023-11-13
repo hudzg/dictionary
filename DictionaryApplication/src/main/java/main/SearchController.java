@@ -22,6 +22,7 @@ import com.sun.speech.freetts.VoiceManager;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -39,6 +40,7 @@ public class SearchController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private List<Integer> wordPos;
 
     @FXML
     private Label wordLabel;
@@ -55,20 +57,22 @@ public class SearchController implements Initializable {
         wordPane.setVisible(false);
         meaningPane.setVisible(false);
         textField.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println("text");
+//            System.out.println("text");
             if (newValue) {
                 textField.setStyle("-fx-border-color: #673AB7; -fx-border-width: 4px;");
+                listView.setVisible(true);
             }
         });
 
         textField.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
                 textField.setStyle("-fx-border-color: #000000; -fx-border-width: 1px;");
+                listView.setVisible(false);
             }
         });
 
         listView.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println("list");
+//            System.out.println("list");
             if (!newValue) {
                 listView.setVisible(false);
             }
@@ -79,9 +83,14 @@ public class SearchController implements Initializable {
 //                try {
 //
 //
-                selectedString = listView.getSelectionModel().getSelectedItem();
-                if (selectedString == null) return;
-                display(selectedString, Main.dictionaryManagement.dictionaryLookup(selectedString));
+//                selectedString = listView.getSelectionModel().getSelectedItem();
+                int pos = listView.getSelectionModel().getSelectedIndex();
+                if(pos == -1) return;
+                pos = wordPos.get(pos);
+                selectedString = Main.dictionaryManagement.getTargetAt(pos);
+                System.out.println("Pos: " + pos);
+//                if (selectedString == null) return;
+                display(selectedString, Main.dictionaryManagement.getExplainAt(pos));
 //                    listView.getItems().clear();
                 listView.setVisible(false);
 //                }
@@ -111,7 +120,8 @@ public class SearchController implements Initializable {
     public void search() {
         String text = textField.getText();
         listView.getItems().clear();
-        listView.getItems().addAll(Main.dictionaryManagement.dictionarySearcher(text));
+        wordPos = Main.dictionaryManagement.getWord(text);
+        for(int x : wordPos) listView.getItems().add(Main.dictionaryManagement.getTargetAt(x));
         listView.setVisible(true);
         listView.toFront();
     }

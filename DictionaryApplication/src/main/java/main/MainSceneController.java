@@ -40,6 +40,14 @@ public class MainSceneController implements Initializable {
     @FXML
     private Button gameButton;
     @FXML
+    private Button addButton;
+    @FXML
+    private Button modifyButton;
+    @FXML
+    private Button translateButton;
+    @FXML
+    private Button removeButton;
+    @FXML
     private VBox dashboard;
     @FXML
     private ImageView menu;
@@ -69,6 +77,42 @@ public class MainSceneController implements Initializable {
         gameButton.addEventHandler(MouseEvent.MOUSE_EXITED,
 //                e -> searchButton.setOpacity(1));
                 e -> gameButton.setStyle("-fx-background-color: #683ab7;" +
+                        "-fx-background-radius: 16;"));
+        addButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
+//                e -> searchButton.setOpacity(0.8));
+                e -> addButton.setStyle("-fx-background-color: #7f57c2;" +
+                        "-fx-background-radius: 16;"));
+
+        addButton.addEventHandler(MouseEvent.MOUSE_EXITED,
+//                e -> searchButton.setOpacity(1));
+                e -> addButton.setStyle("-fx-background-color: #683ab7;" +
+                        "-fx-background-radius: 16;"));
+        translateButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
+//                e -> searchButton.setOpacity(0.8));
+                e -> translateButton.setStyle("-fx-background-color: #7f57c2;" +
+                        "-fx-background-radius: 16;"));
+
+        translateButton.addEventHandler(MouseEvent.MOUSE_EXITED,
+//                e -> searchButton.setOpacity(1));
+                e -> translateButton.setStyle("-fx-background-color: #683ab7;" +
+                        "-fx-background-radius: 16;"));
+        removeButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
+//                e -> searchButton.setOpacity(0.8));
+                e -> removeButton.setStyle("-fx-background-color: #7f57c2;" +
+                        "-fx-background-radius: 16;"));
+
+        removeButton.addEventHandler(MouseEvent.MOUSE_EXITED,
+//                e -> searchButton.setOpacity(1));
+                e -> removeButton.setStyle("-fx-background-color: #683ab7;" +
+                        "-fx-background-radius: 16;"));
+        modifyButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
+//                e -> searchButton.setOpacity(0.8));
+                e -> modifyButton.setStyle("-fx-background-color: #7f57c2;" +
+                        "-fx-background-radius: 16;"));
+
+        modifyButton.addEventHandler(MouseEvent.MOUSE_EXITED,
+//                e -> searchButton.setOpacity(1));
+                e -> modifyButton.setStyle("-fx-background-color: #683ab7;" +
                         "-fx-background-radius: 16;"));
     }
 

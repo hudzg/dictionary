@@ -60,6 +60,7 @@ public class GameSceneController implements Initializable {
                         button.setBorder(new Border((BorderStroke) null));
                     }
         }
+        gridPane.requestFocus();
         lastIdx = flagNum;
     }
 

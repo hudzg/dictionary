@@ -56,6 +56,13 @@ public class ModifyController implements Initializable {
             warningTextArea.setText(meaning_cur_words);
         }
         warningTextArea.setVisible(true);
+        if(meaning_cur_words == null){
+            newMeaningArea.setText("*** can not find these words ! ***");
+        }
+        else{
+            newMeaningArea.setText(meaning_cur_words);
+        }
+        newMeaningArea.setVisible(true);
     }
     public void ClickOkButton(ActionEvent actionEvent) {
         askForSureTextArea.setVisible(true);
