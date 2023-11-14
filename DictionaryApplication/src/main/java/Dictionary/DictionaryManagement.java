@@ -125,11 +125,14 @@ public class DictionaryManagement extends Dictionary {
         int len = sample.length();
 
         List<String> stringList = new ArrayList<>();
-        for (String ii : dictionary.keySet()) {
-            if (ii.length() >= len && ii.substring(0, len).equals(sample)) {
-                stringList.add(ii);
-            }
-        }
+//        for (String ii : dictionary.keySet()) {
+//            if (ii.length() >= len && ii.substring(0, len).equals(sample)) {
+//                stringList.add(ii);
+//            }
+//        }
+
+        List<Integer> pos = trie.get(sample);
+        for(int x : pos) stringList.add(words[x].getWordTarget());
         return stringList;
 
 

@@ -40,7 +40,6 @@ public class SearchController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    private List<Integer> wordPos;
 
     @FXML
     private Label wordLabel;
@@ -83,14 +82,14 @@ public class SearchController implements Initializable {
 //                try {
 //
 //
-//                selectedString = listView.getSelectionModel().getSelectedItem();
-                int pos = listView.getSelectionModel().getSelectedIndex();
-                if(pos == -1) return;
-                pos = wordPos.get(pos);
-                selectedString = Main.dictionaryManagement.getTargetAt(pos);
-                System.out.println("Pos: " + pos);
-//                if (selectedString == null) return;
-                display(selectedString, Main.dictionaryManagement.getExplainAt(pos));
+                selectedString = listView.getSelectionModel().getSelectedItem();
+//                int pos = listView.getSelectionModel().getSelectedIndex();
+//                if(pos == -1) return;
+//                pos = wordPos.get(pos);
+//                selectedString = Main.dictionaryManagement.getTargetAt(pos);
+//                System.out.println("Pos: " + pos);
+                if (selectedString == null) return;
+                display(selectedString, Main.dictionaryManagement.dictionaryLookup(selectedString));
 //                    listView.getItems().clear();
                 listView.setVisible(false);
 //                }
@@ -120,8 +119,9 @@ public class SearchController implements Initializable {
     public void search() {
         String text = textField.getText();
         listView.getItems().clear();
-        wordPos = Main.dictionaryManagement.getWord(text);
-        for(int x : wordPos) listView.getItems().add(Main.dictionaryManagement.getTargetAt(x));
+//        wordPos = Main.dictionaryManagement.getWord(text);
+//        for(int x : wordPos) listView.getItems().add(Main.dictionaryManagement.getTargetAt(x));
+        listView.getItems().addAll(Main.dictionaryManagement.dictionarySearcher(text));
         listView.setVisible(true);
         listView.toFront();
     }
