@@ -9,19 +9,16 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class DictionaryManagement extends Dictionary {
-  //  private Trie tree;
     public DictionaryManagement() {
         super();
-      //  tree = new Trie();
     }
-    public void changeMeaning(String word, String Meaning){
-        dictionary.put(word, Meaning);
-     /*   int id = tree.getIndex(word);
-        if(id != -1){
-            this.words[id].setWordExplain(Meaning);
-        }
 
-      */
+    public void changeMeaning(String word, String Meaning) {
+//        dictionary.put(word, Meaning);
+        int idx = trie.getExactly(word);
+        if (idx != -1) {
+            words[idx].setWordExplain(Meaning);
+        }
     }
 
     public void insertFromCommandline() {
@@ -41,8 +38,10 @@ public class DictionaryManagement extends Dictionary {
 
         }
     }
-    public void removeFromApp(String Word){
-        dictionary.remove(Word);
+
+    public void removeFromApp(String Word) {
+//        dictionary.remove(Word);
+        removeWord(Word);
        /* int id = tree.getIndex(Word);
         if(id != -1){
             tree.removeWord(Word, id);
@@ -51,6 +50,7 @@ public class DictionaryManagement extends Dictionary {
 
         */
     }
+
     public void removeFromCommandline() {
         clearScreen();
         Scanner input = new Scanner(System.in);
@@ -97,8 +97,9 @@ public class DictionaryManagement extends Dictionary {
     }
 
     public String dictionaryLookup(String s) {
-        return dictionary.get(s);
-       // return tree.find(s);
+//        return dictionary.get(s);
+        int idx = trie.getExactly(s);
+        return idx == -1 ? null : words[idx].getWordExplain();
     }
 
     public void dictionarySearcherCommandline() {
@@ -132,12 +133,11 @@ public class DictionaryManagement extends Dictionary {
 //        }
 
         List<Integer> pos = trie.get(sample);
-        for(int x : pos) stringList.add(words[x].getWordTarget());
+        for (int x : pos) stringList.add(words[x].getWordTarget());
         return stringList;
 
 
-
-     //   return tree.Searcher(sample);
+        //   return tree.Searcher(sample);
     }
 
     public void dictionaryExportToFile() {
@@ -145,62 +145,62 @@ public class DictionaryManagement extends Dictionary {
     }
 
     public void Game() {
-        Random rand = new Random();
-        Scanner input = new Scanner(System.in);
-
-        int cnt = 0;
-        List<String> wrds = new ArrayList<>();
-        for (String ii : dictionary.keySet()) {
-            if (++cnt > 1000) break;
-            wrds.add(ii);
-        }
-        String sample2 = "ueoaibcdfghxyzlmnopqw";
-        String sample3 = "ABCD";
-        Map<Integer, String> M = new TreeMap<>();
-        M.put(0, "A");
-        M.put(1, "B");
-        M.put(2, "C");
-        M.put(3, "D");
-        do {
-            int id = Math.abs(rand.nextInt()) % wrds.size();
-            String word = wrds.get(id);
-            int len = word.length();
-
-            int missed = Math.abs(rand.nextInt()) % len;
-            String ans = word.substring(missed, missed + 1);
-            String sample4 = "";
-            while (sample4.length() < 4) {
-                int x = Math.abs(rand.nextInt()) % sample2.length();
-                boolean ok = !sample2.substring(x, x + 1).equals(ans);
-                for (int i = 0; i < sample4.length(); ++i) {
-                    if (sample2.substring(x, x + 1).equals(sample4.substring(i, i + 1))) ok = false;
-                }
-                if (ok) sample4 += sample2.substring(x, x + 1);
-            }
-
-            for (int i = 0; i < len; ++i) {
-                if (i == missed) System.out.print("_");
-                else System.out.print(word.substring(i, i + 1));
-            }
-            System.out.println("");
-
-            int ans_id = Math.abs(rand.nextInt()) % 4;
-            for (int i = 0; i < 4; ++i) {
-                System.out.print(sample3.substring(i, i + 1) + ": ");
-                if (i == ans_id) System.out.println(ans);
-                else System.out.println(sample4.substring(i, i + 1));
-            }
-            System.out.print("Your choice [A/B/C/D]: ");
-            String players_answer = input.nextLine();
-            if (M.get(ans_id).equals(players_answer)) {
-                System.out.println("Chinh xac !");
-            } else System.out.println("Sai ! " + "\n" + "Answer is: " + M.get(ans_id));
-
-            System.out.println("Bam phim 1 de choi lai, 0 de thoat !");
-            if (input.nextInt() == 0) break;
-            input.nextLine();
-        }
-        while (true);
+//        Random rand = new Random();
+//        Scanner input = new Scanner(System.in);
+//
+//        int cnt = 0;
+//        List<String> wrds = new ArrayList<>();
+//        for (String ii : dictionary.keySet()) {
+//            if (++cnt > 1000) break;
+//            wrds.add(ii);
+//        }
+//        String sample2 = "ueoaibcdfghxyzlmnopqw";
+//        String sample3 = "ABCD";
+//        Map<Integer, String> M = new TreeMap<>();
+//        M.put(0, "A");
+//        M.put(1, "B");
+//        M.put(2, "C");
+//        M.put(3, "D");
+//        do {
+//            int id = Math.abs(rand.nextInt()) % wrds.size();
+//            String word = wrds.get(id);
+//            int len = word.length();
+//
+//            int missed = Math.abs(rand.nextInt()) % len;
+//            String ans = word.substring(missed, missed + 1);
+//            String sample4 = "";
+//            while (sample4.length() < 4) {
+//                int x = Math.abs(rand.nextInt()) % sample2.length();
+//                boolean ok = !sample2.substring(x, x + 1).equals(ans);
+//                for (int i = 0; i < sample4.length(); ++i) {
+//                    if (sample2.substring(x, x + 1).equals(sample4.substring(i, i + 1))) ok = false;
+//                }
+//                if (ok) sample4 += sample2.substring(x, x + 1);
+//            }
+//
+//            for (int i = 0; i < len; ++i) {
+//                if (i == missed) System.out.print("_");
+//                else System.out.print(word.substring(i, i + 1));
+//            }
+//            System.out.println("");
+//
+//            int ans_id = Math.abs(rand.nextInt()) % 4;
+//            for (int i = 0; i < 4; ++i) {
+//                System.out.print(sample3.substring(i, i + 1) + ": ");
+//                if (i == ans_id) System.out.println(ans);
+//                else System.out.println(sample4.substring(i, i + 1));
+//            }
+//            System.out.print("Your choice [A/B/C/D]: ");
+//            String players_answer = input.nextLine();
+//            if (M.get(ans_id).equals(players_answer)) {
+//                System.out.println("Chinh xac !");
+//            } else System.out.println("Sai ! " + "\n" + "Answer is: " + M.get(ans_id));
+//
+//            System.out.println("Bam phim 1 de choi lai, 0 de thoat !");
+//            if (input.nextInt() == 0) break;
+//            input.nextLine();
+//        }
+//        while (true);
 
     }
 
@@ -221,10 +221,6 @@ public class DictionaryManagement extends Dictionary {
                 if ('@' == data.charAt(0)) {
 //                    System.out.println(data);
                     if (!target.isEmpty()) {
-                        dictionary.put(target, explain);
-                        words[count_words++] = new Word(target, explain);
-//                        dictionary.put(target, explain);
-//                        words[n++] = new Word(target, explain);
                         addWord(target, explain);
                     }
                     int idx = data.indexOf('/');

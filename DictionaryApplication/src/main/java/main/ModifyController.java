@@ -51,7 +51,7 @@ public class ModifyController implements Initializable {
     public void ClickOkButton(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("");
-        alert.setHeaderText("are you sure you want to change ?");
+        alert.setHeaderText("Are you sure you want to change ?");
       //  alert.setContentText("Do you want to save before exiting?: ");
 
         if(alert.showAndWait().get() == ButtonType.OK){

@@ -9,7 +9,6 @@ public class Dictionary {
 
     protected int wordSize;
     protected Word[] words;
-    protected int count_words;
     protected Map<String, String> dictionary;
     protected Trie trie;
 
@@ -21,11 +20,12 @@ public class Dictionary {
     }
 
     public void addWord(String target, String explain) {
-        dictionary.put(target, explain);
+//        dictionary.put(target, explain);
         trie.add(target, wordSize);
         words[wordSize++] = new Word(target, explain);
     }
-    public Word getWord(int i){
+
+    public Word getWord(int i) {
         return words[i];
     }
 
@@ -35,6 +35,12 @@ public class Dictionary {
 
     public String getExplainAt(int pos) {
         return words[pos].getWordExplain();
+    }
+
+    public void removeWord(String s) {
+        int idx = trie.remove(s);
+//        System.out.println(idx);
+        if(idx != -1) words[idx] = null;
     }
 
     public void clearScreen() {

@@ -34,6 +34,8 @@ public class SearchController implements Initializable {
     private Button searchButton;
     @FXML
     private ListView<String> listView;
+    @FXML
+    private Button removeButton;
 
     private String selectedString;
 
@@ -55,6 +57,7 @@ public class SearchController implements Initializable {
         listView.setVisible(false);
         wordPane.setVisible(false);
         meaningPane.setVisible(false);
+        removeButton.setVisible(false);
         textField.focusedProperty().addListener((observable, oldValue, newValue) -> {
 //            System.out.println("text");
             if (newValue) {
@@ -129,10 +132,30 @@ public class SearchController implements Initializable {
     public void display(String word, String meaning) {
         wordPane.setVisible(true);
         meaningPane.setVisible(true);
+        removeButton.setVisible(true);
         wordLabel.setText(word);
         meaningLabel.setText(meaning);
         wordLabel.toFront();
         meaningLabel.toFront();
+        textField.setText(word);
+    }
+
+    public void clickRemoveButton() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("");
+        alert.setHeaderText("Do you want to remove \"" + selectedString + "\" ?");
+
+        if(alert.showAndWait().get() == ButtonType.OK){
+            System.out.println(selectedString);
+            Main.dictionaryManagement.removeFromApp(selectedString);
+            wordPane.setVisible(false);
+            meaningPane.setVisible(false);
+            removeButton.setVisible(false);
+            listView.setVisible(false);
+            textField.setText("");
+            selectedString = "";
+            listView.getItems().clear();
+        }
     }
 
     public void speak() {
