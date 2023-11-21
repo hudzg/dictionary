@@ -14,6 +14,8 @@ public class Main extends Application {
 
 
     public static DictionaryManagement dictionaryManagement;
+    public static DictionaryManagement myDict;
+    public static DictionaryManagement englishDict;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -38,6 +40,9 @@ public class Main extends Application {
     public static void main(String[] args) {
         dictionaryManagement = new DictionaryManagement();
         dictionaryManagement.insertFromFile();
+        myDict = new DictionaryManagement();
+        myDict.insertFromFile("src/main/java/Dictionary/dictionary/myDict.txt");
+        englishDict = dictionaryManagement;
         launch();
     }
 }

@@ -1,0 +1,24 @@
+@hello
+chao xìn
+@know
+biết
+@stupid
+ngu
+@use
+Sử dụng
+@down
+Xuống
+@say
+Nói
+@cut
+Cắt
+@love
+Iu
+@number
+Số
+@somebody
+Người nào đó
+@young
+Trẻ
+@big
+Lớn

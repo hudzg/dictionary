@@ -2,7 +2,6 @@ package main;
 
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,8 +9,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -26,6 +23,9 @@ import java.util.ResourceBundle;
 
 public class MainSceneController implements Initializable {
 
+
+    private static final String MY_DICTIONARY = "My Dictionary";
+    private static final String ENGLISH_DICTIONARY = "English Dictionary";
     private static final int duration = 300;
     private Stage stage;
     private Scene scene;
@@ -48,17 +48,20 @@ public class MainSceneController implements Initializable {
     @FXML
     private Button removeButton;
     @FXML
+    private Button dictionaryTypeButton;
+    @FXML
     private VBox dashboard;
     @FXML
-    private ImageView menu;
+    private ImageView menuImageView;
 
     private final Image menuImg = new Image(getClass().getResourceAsStream("img/menu.png"));
+    private final Image swapImg = new Image(getClass().getResourceAsStream("img/swap.png"));
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         shadowPane.setVisible(false);
         dashboard.setLayoutX(-200);
-        menu.setImage(menuImg);
+        menuImageView.setImage(menuImg);
         searchButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
 //                e -> searchButton.setOpacity(0.8));
                 e -> searchButton.setStyle("-fx-background-color: #7f57c2;" +
@@ -114,6 +117,15 @@ public class MainSceneController implements Initializable {
 //                e -> searchButton.setOpacity(1));
                 e -> modifyButton.setStyle("-fx-background-color: #683ab7;" +
                         "-fx-background-radius: 16;"));
+        dictionaryTypeButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
+//                e -> searchButton.setOpacity(0.8));
+                e -> dictionaryTypeButton.setStyle("-fx-background-color: #5f35b1;" +
+                        "-fx-background-radius: 8;"));
+
+        dictionaryTypeButton.addEventHandler(MouseEvent.MOUSE_EXITED,
+//                e -> searchButton.setOpacity(1));
+                e -> dictionaryTypeButton.setStyle("-fx-background-color: #522da8;" +
+                        "-fx-background-radius: 8;"));
     }
 
     public void setDashboardVisible() {
@@ -278,5 +290,16 @@ public class MainSceneController implements Initializable {
 
         while (!translate.getChildren().isEmpty())
             ((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().add(0, translate.getChildren().get(0));
+    }
+
+    public void clickDictionaryTypeButton(ActionEvent event){
+        if(dictionaryTypeButton.getText().equals(MY_DICTIONARY)) {
+            dictionaryTypeButton.setText(ENGLISH_DICTIONARY);
+            Main.dictionaryManagement = Main.englishDict;
+        }
+        else {
+            dictionaryTypeButton.setText(MY_DICTIONARY);
+            Main.dictionaryManagement = Main.myDict;
+        }
     }
 }

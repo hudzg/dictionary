@@ -236,6 +236,50 @@ public class DictionaryManagement extends Dictionary {
                     explain += "\n" + data;
                 }
             }
+            addWord(target, explain);
+            fileInput.close();
+            System.out.println(target);
+
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+            System.out.println(e);
+        }
+    }
+
+    public void insertFromFile(String path) {
+//        File file = new File("D:\\TIN HOC\\javaOOP\\project\\dictionary\\src\\dictionary\\dictionary.txt");
+//        System.out.println(file.canRead());
+        try {
+            File file = new File(path);
+
+            Scanner fileInput = new Scanner(file);
+            String target = "";
+            String explain = "";
+            while (fileInput.hasNextLine()) {
+                String data = fileInput.nextLine();
+//                System.out.println(data);
+                if (data.isEmpty()) continue;
+//                System.out.println(data.charAt(0));
+                if ('@' == data.charAt(0)) {
+//                    System.out.println(data);
+                    if (!target.isEmpty()) {
+                        addWord(target, explain);
+                    }
+                    int idx = data.indexOf('/');
+                    if (idx == -1) {
+                        target = data.substring(1);
+                        explain = "";
+                    } else {
+                        target = data.substring(1, idx - 1);
+                        explain = data.substring(idx);
+                    }
+//                    System.out.println(data);
+                } else {
+                    explain += "\n" + data;
+                }
+            }
+            addWord(target, explain);
             fileInput.close();
             System.out.println(target);
 

@@ -155,6 +155,7 @@ public class SearchController implements Initializable {
             textField.setText("");
             selectedString = "";
             listView.getItems().clear();
+            textField.getParent().requestFocus();
         }
     }
 
