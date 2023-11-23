@@ -11,9 +11,16 @@ public class DictionaryCommandline extends DictionaryManagement {
 
     public void showAllWords() {
         clearScreen();
-        for (Map.Entry word : dictionary.entrySet()) {
+       /* for (Map.Entry word : dictionary.entrySet()) {
             System.out.println(word.getKey() + ": " + word.getValue());
             System.out.println();
+        }
+
+        */
+
+
+        for(int i = 0; i < wordSize; ++i){
+            System.out.println(words[i].getWordTarget() + ": " + words[i].getWordExplain());
         }
         Scanner input = new Scanner(System.in);
         System.out.println("Ấn phím 0 để thoát");

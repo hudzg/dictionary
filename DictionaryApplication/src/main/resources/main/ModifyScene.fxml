@@ -10,7 +10,10 @@
 
 <AnchorPane onKeyTyped="#typingWords" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ModifyController">
    <children>
-      <Button fx:id="okButton" layoutX="451.0" layoutY="507.0" mnemonicParsing="false" onAction="#ClickOkButton" prefHeight="54.0" prefWidth="102.0" text="OK" />
+      <Button fx:id="okButton" layoutX="451.0" layoutY="507.0" mnemonicParsing="false" onAction="#ClickOkButton" prefHeight="54.0" prefWidth="102.0" style="-fx-background-radius: 20;" text="OK">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
       <Label fx:id="wordTitle" alignment="CENTER" contentDisplay="CENTER" layoutX="25.0" layoutY="78.0" prefHeight="35.0" prefWidth="454.0" text="a word/phrase/line">
          <font>
             <Font size="24.0" />
@@ -23,7 +26,10 @@
       </Label>
       <TextArea fx:id="changeMeaningArea" layoutX="502.0" layoutY="124.0" onMousePressed="#selectWord" prefHeight="365.0" prefWidth="454.0" />
       <Accordion />
-      <ListView fx:id="listView" layoutX="32.0" layoutY="212.0" onMouseClicked="#selectWord" prefHeight="277.0" prefWidth="454.0" />
-      <TextArea fx:id="wordArea" layoutX="31.0" layoutY="124.0" onKeyTyped="#typingWords" prefHeight="88.0" prefWidth="454.0" />
+      <ListView fx:id="listView" layoutX="32.0" layoutY="188.0" onMouseClicked="#selectWord" prefHeight="302.0" prefWidth="454.0" />
+      <TextArea fx:id="wordArea" layoutX="31.0" layoutY="124.0" onKeyTyped="#typingWords" prefHeight="54.0" prefWidth="454.0" promptText="Search">
+         <font>
+            <Font size="18.0" />
+         </font></TextArea>
    </children>
 </AnchorPane>

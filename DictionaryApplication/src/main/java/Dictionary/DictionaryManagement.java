@@ -31,7 +31,8 @@ public class DictionaryManagement extends Dictionary {
         while (n-- > 0) {
             String target = input.nextLine();
             String explain = input.nextLine();
-            dictionary.put(target, explain);
+           // dictionary.put(target, explain);                           /// use trie
+            addWord(target, explain);
         }
         System.out.println("Ấn phím 0 để thoát");
         while (input.nextInt() != 0) {
@@ -41,7 +42,7 @@ public class DictionaryManagement extends Dictionary {
 
     public void removeFromApp(String Word) {
 //        dictionary.remove(Word);
-        removeWord(Word);
+        removeWord(Word);                                               /// ok
        /* int id = tree.getIndex(Word);
         if(id != -1){
             tree.removeWord(Word, id);
@@ -56,7 +57,8 @@ public class DictionaryManagement extends Dictionary {
         Scanner input = new Scanner(System.in);
         System.out.println("Bạn nhập từ cần xoá đê!!!");
         String s = input.nextLine();
-        dictionary.remove(s);
+        //dictionary.remove(s);                                                           /// use trie
+        removeWord(s);
         System.out.println("Đã xoá thành công!!!");
         System.out.println("Ấn phím 0 để thoát");
         while (input.nextInt() != 0) {
@@ -71,7 +73,8 @@ public class DictionaryManagement extends Dictionary {
         String s = input.nextLine();
         System.out.println("Bạn nhập nghĩa mới đê!!!");
         String t = input.nextLine();
-        dictionary.replace(s, t);
+      //  dictionary.replace(s, t);                               ///use trie to replace
+        changeMeaning(s, t);
         System.out.println("Đã sửa thành công!!!");
         System.out.println("Ấn phím 0 để thoát");
         while (input.nextInt() != 0) {
@@ -84,12 +87,23 @@ public class DictionaryManagement extends Dictionary {
         Scanner input = new Scanner(System.in);
         System.out.println("Bạn nhập từ cần tra cứu đê!!!");
         String s = input.nextLine();
-        if (!dictionary.containsKey(s)) {
+        int id = trie.getExactly(s);
+        if(id == -1){
+            System.out.println("Không tìm thấy :((");
+        }
+        else {
+            System.out.println("Từ: " + getTargetAt(id));
+            System.out.println("Nghĩa: " + getExplainAt(id));
+        }
+        /*
+        if (!dictionary.containsKey(s)) {                                               /// use trie
             System.out.println("Không tìm thấy :((");
         } else {
             System.out.println("Từ: " + s);
             System.out.println("Nghĩa: " + dictionary.get(s));
         }
+
+         */
         System.out.println("Ấn phím 0 để thoát");
         while (input.nextInt() != 0) {
 
@@ -110,12 +124,19 @@ public class DictionaryManagement extends Dictionary {
         int len = sample.length();
 
         int cnt = 0;
+        List<Integer> pos = trie.get(sample);
+        for (int x : pos){
+            System.out.print(getTargetAt(x) + ", ");
+            if (++cnt % 10 == 0) System.out.println("\n");
+        }
+        /*
         for (String ii : dictionary.keySet()) {
-            if (ii.length() >= len && ii.substring(0, len).equals(sample)) {
+            if (ii.length() >= len && ii.substring(0, len).equals(sample)) {            /// use trie
                 System.out.print(ii + ", ");
                 if (++cnt % 10 == 0) System.out.println("");
             }
         }
+         */
         System.out.println("Ấn phím 0 để thoát");
         while (input.nextInt() != 0) {
 
@@ -135,7 +156,6 @@ public class DictionaryManagement extends Dictionary {
         List<Integer> pos = trie.get(sample);
         for (int x : pos) stringList.add(words[x].getWordTarget());
         return stringList;
-
 
         //   return tree.Searcher(sample);
     }
