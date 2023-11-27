@@ -30,12 +30,14 @@ import java.util.ResourceBundle;
 public class SearchController implements Initializable {
     @FXML
     private TextField textField;
-    @FXML
-    private Button searchButton;
+//    @FXML
+//    private Button searchButton;
     @FXML
     private ListView<String> listView;
     @FXML
     private Button removeButton;
+    @FXML
+    private Button speakButton;
 
     private String selectedString;
 
@@ -61,17 +63,46 @@ public class SearchController implements Initializable {
         textField.focusedProperty().addListener((observable, oldValue, newValue) -> {
 //            System.out.println("text");
             if (newValue) {
-                textField.setStyle("-fx-border-color: #673AB7; -fx-border-width: 4px;");
+                textField.setStyle("-fx-border-color: #673AB7; -fx-border-width: 2px; " +
+                        "-fx-border-radius: 20 20 0 0;" +
+                        "-fx-background-radius: 20 20 0 0;");
                 listView.setVisible(true);
             }
         });
 
         textField.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
-                textField.setStyle("-fx-border-color: #000000; -fx-border-width: 1px;");
+                textField.setStyle("-fx-border-color: #000000; -fx-border-width: 1px;" +
+                        "-fx-border-radius: 20;" +
+                        "-fx-background-radius: 20;");
                 listView.setVisible(false);
             }
         });
+
+        removeButton.setStyle("-fx-background-color: #683ab7;" +
+                "-fx-background-radius: 16;");
+        speakButton.setStyle("-fx-background-color: #683ab7;" +
+                "-fx-background-radius: 16;");
+
+        removeButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
+//                e -> searchButton.setOpacity(0.8));
+                e -> removeButton.setStyle("-fx-background-color: #7f57c2;" +
+                        "-fx-background-radius: 16;"));
+
+        removeButton.addEventHandler(MouseEvent.MOUSE_EXITED,
+//                e -> searchButton.setOpacity(1));
+                e -> removeButton.setStyle("-fx-background-color: #683ab7;" +
+                        "-fx-background-radius: 16;"));
+
+        speakButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
+//                e -> searchButton.setOpacity(0.8));
+                e -> speakButton.setStyle("-fx-background-color: #7f57c2;" +
+                        "-fx-background-radius: 16;"));
+
+        speakButton.addEventHandler(MouseEvent.MOUSE_EXITED,
+//                e -> searchButton.setOpacity(1));
+                e -> speakButton.setStyle("-fx-background-color: #683ab7;" +
+                        "-fx-background-radius: 16;"));
 
         listView.focusedProperty().addListener((observable, oldValue, newValue) -> {
 //            System.out.println("list");
