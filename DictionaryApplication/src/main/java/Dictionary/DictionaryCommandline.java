@@ -11,12 +11,6 @@ public class DictionaryCommandline extends DictionaryManagement {
 
     public void showAllWords() {
         clearScreen();
-       /* for (Map.Entry word : dictionary.entrySet()) {
-            System.out.println(word.getKey() + ": " + word.getValue());
-            System.out.println();
-        }
-
-        */
 
 
         for(int i = 0; i < wordSize; ++i){
@@ -73,7 +67,7 @@ public class DictionaryCommandline extends DictionaryManagement {
             } else if (type == 8) {
 
             } else if (type == 9) {
-
+                    dictionaryExportToFile();
             } else {
                 System.out.println("Action not supported");
             }
@@ -84,6 +78,8 @@ public class DictionaryCommandline extends DictionaryManagement {
         DictionaryCommandline dictionaryCommandline = new DictionaryCommandline();
         dictionaryCommandline.insertFromFile();
 //        dictionaryCommandline.showAllWords();
+        dictionaryCommandline.words[0].setWordTarget("a");
         dictionaryCommandline.dictionaryAdvanced();
+
     }
 }

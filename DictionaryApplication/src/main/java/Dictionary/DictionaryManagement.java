@@ -4,8 +4,7 @@ package Dictionary;
 
 import javafx.collections.ObservableList;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.*;
 
 public class DictionaryManagement extends Dictionary {
@@ -18,6 +17,7 @@ public class DictionaryManagement extends Dictionary {
         int idx = trie.getExactly(word);
         if (idx != -1) {
             words[idx].setWordExplain(Meaning);
+            dictionaryExportToFile();
         }
     }
 
@@ -33,7 +33,9 @@ public class DictionaryManagement extends Dictionary {
             String explain = input.nextLine();
            // dictionary.put(target, explain);                           /// use trie
             addWord(target, explain);
+            dictionaryExportToFile();
         }
+        dictionaryExportToFile();
         System.out.println("Ấn phím 0 để thoát");
         while (input.nextInt() != 0) {
 
@@ -41,15 +43,9 @@ public class DictionaryManagement extends Dictionary {
     }
 
     public void removeFromApp(String Word) {
-//        dictionary.remove(Word);
         removeWord(Word);                                               /// ok
-       /* int id = tree.getIndex(Word);
-        if(id != -1){
-            tree.removeWord(Word, id);
+        dictionaryExportToFile();
 
-        }
-
-        */
     }
 
     public void removeFromCommandline() {
@@ -57,8 +53,11 @@ public class DictionaryManagement extends Dictionary {
         Scanner input = new Scanner(System.in);
         System.out.println("Bạn nhập từ cần xoá đê!!!");
         String s = input.nextLine();
-        //dictionary.remove(s);                                                           /// use trie
+
         removeWord(s);
+
+        dictionaryExportToFile();
+
         System.out.println("Đã xoá thành công!!!");
         System.out.println("Ấn phím 0 để thoát");
         while (input.nextInt() != 0) {
@@ -73,8 +72,10 @@ public class DictionaryManagement extends Dictionary {
         String s = input.nextLine();
         System.out.println("Bạn nhập nghĩa mới đê!!!");
         String t = input.nextLine();
-      //  dictionary.replace(s, t);                               ///use trie to replace
+
         changeMeaning(s, t);
+
+
         System.out.println("Đã sửa thành công!!!");
         System.out.println("Ấn phím 0 để thoát");
         while (input.nextInt() != 0) {
@@ -95,15 +96,7 @@ public class DictionaryManagement extends Dictionary {
             System.out.println("Từ: " + getTargetAt(id));
             System.out.println("Nghĩa: " + getExplainAt(id));
         }
-        /*
-        if (!dictionary.containsKey(s)) {                                               /// use trie
-            System.out.println("Không tìm thấy :((");
-        } else {
-            System.out.println("Từ: " + s);
-            System.out.println("Nghĩa: " + dictionary.get(s));
-        }
 
-         */
         System.out.println("Ấn phím 0 để thoát");
         while (input.nextInt() != 0) {
 
@@ -111,7 +104,6 @@ public class DictionaryManagement extends Dictionary {
     }
 
     public String dictionaryLookup(String s) {
-//        return dictionary.get(s);
         int idx = trie.getExactly(s);
         return idx == -1 ? null : words[idx].getWordExplain();
     }
@@ -129,14 +121,8 @@ public class DictionaryManagement extends Dictionary {
             System.out.print(getTargetAt(x) + ", ");
             if (++cnt % 10 == 0) System.out.println("\n");
         }
-        /*
-        for (String ii : dictionary.keySet()) {
-            if (ii.length() >= len && ii.substring(0, len).equals(sample)) {            /// use trie
-                System.out.print(ii + ", ");
-                if (++cnt % 10 == 0) System.out.println("");
-            }
-        }
-         */
+        System.out.println("");
+
         System.out.println("Ấn phím 0 để thoát");
         while (input.nextInt() != 0) {
 
@@ -147,20 +133,31 @@ public class DictionaryManagement extends Dictionary {
         int len = sample.length();
 
         List<String> stringList = new ArrayList<>();
-//        for (String ii : dictionary.keySet()) {
-//            if (ii.length() >= len && ii.substring(0, len).equals(sample)) {
-//                stringList.add(ii);
-//            }
-//        }
 
         List<Integer> pos = trie.get(sample);
         for (int x : pos) stringList.add(words[x].getWordTarget());
         return stringList;
-
-        //   return tree.Searcher(sample);
     }
 
     public void dictionaryExportToFile() {
+        String DestinationFilePath = "src/main/java/Dictionary/dictionary/dictionary.txt";
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(DestinationFilePath))) {
+
+            //int cnt = 0;
+            String fileContent = "";
+            for(int i = 0; i < wordSize; ++i) if(words[i] != null){
+                fileContent = "@" + words[i].getWordTarget() + "\n";
+                fileContent += words[i].getWordExplain() + "\n";
+                writer.write(fileContent);
+            }
+
+            writer.close();
+            System.out.println("Successfully wrote to the file!");
+        }
+        catch (IOException e) {
+            System.out.println("An error occurred !!!");
+            e.printStackTrace();
+        }
 
     }
 
@@ -300,8 +297,14 @@ public class DictionaryManagement extends Dictionary {
                 }
             }
             addWord(target, explain);
+
+
+
+            dictionaryExportToFile();  /*  fix the original file */
+
+
             fileInput.close();
-            System.out.println(target);
+           // System.out.println(target);
 
 
         } catch (FileNotFoundException e) {
