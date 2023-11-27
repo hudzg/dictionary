@@ -39,7 +39,7 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         dictionaryManagement = new DictionaryManagement();
-        dictionaryManagement.insertFromFile();
+        dictionaryManagement.insertFromFile("src/main/java/Dictionary/dictionary/dictionary.txt");
         myDict = new DictionaryManagement();
         myDict.insertFromFile("src/main/java/Dictionary/dictionary/myDict.txt");
         englishDict = dictionaryManagement;

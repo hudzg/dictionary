@@ -40,7 +40,7 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <TextField fx:id="textField" layoutX="191.0" layoutY="72.0" onKeyTyped="#search" prefHeight="51.0" prefWidth="629.0" style="-fx-border-radius: 20; -fx-background-radius: 20;">
+      <TextField fx:id="textField" layoutX="191.0" layoutY="72.0" onKeyTyped="#search" prefHeight="51.0" prefWidth="629.0" promptText="Search" style="-fx-border-radius: 20; -fx-background-radius: 20;">
          <font>
             <Font size="24.0" />
          </font>
