@@ -46,8 +46,6 @@ public class MainSceneController implements Initializable {
     @FXML
     private Button translateButton;
     @FXML
-    private Button removeButton;
-    @FXML
     private Button dictionaryTypeButton;
     @FXML
     private VBox dashboard;
@@ -98,15 +96,6 @@ public class MainSceneController implements Initializable {
         translateButton.addEventHandler(MouseEvent.MOUSE_EXITED,
 //                e -> searchButton.setOpacity(1));
                 e -> translateButton.setStyle("-fx-background-color: #683ab7;" +
-                        "-fx-background-radius: 16;"));
-        removeButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
-//                e -> searchButton.setOpacity(0.8));
-                e -> removeButton.setStyle("-fx-background-color: #7f57c2;" +
-                        "-fx-background-radius: 16;"));
-
-        removeButton.addEventHandler(MouseEvent.MOUSE_EXITED,
-//                e -> searchButton.setOpacity(1));
-                e -> removeButton.setStyle("-fx-background-color: #683ab7;" +
                         "-fx-background-radius: 16;"));
         modifyButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
 //                e -> searchButton.setOpacity(0.8));
@@ -274,17 +263,6 @@ public class MainSceneController implements Initializable {
         setDashboardHidden();
         AnchorPane dashboard = FXMLLoader.load(getClass().getResource("MainScene.fxml"));
         AnchorPane translate = FXMLLoader.load(getClass().getResource("ModifyScene.fxml"));
-
-        removeOthers(event);
-
-        while (!translate.getChildren().isEmpty())
-            ((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().add(0, translate.getChildren().get(0));
-    }
-    public void clickRemoveButton(ActionEvent event) throws IOException {
-        setDashboardHidden();
-        AnchorPane dashboard = FXMLLoader.load(getClass().getResource("MainScene.fxml"));
-        AnchorPane translate = FXMLLoader.load(getClass().getResource("removeScene.fxml"));
-        //AnchorPane translate = FXMLLoader.load(getClass().getResource("nhap.fxml"));
 
         removeOthers(event);
 
