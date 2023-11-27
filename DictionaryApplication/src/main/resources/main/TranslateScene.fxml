@@ -38,7 +38,7 @@
             <String fx:value="root" />
          </styleClass>
       </ScrollPane>
-      <Button fx:id="translateButton" layoutX="663.0" layoutY="321.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="132.0" text="Translate" textFill="WHITE">
+      <Button fx:id="translateButton" layoutX="663.0" layoutY="321.0" mnemonicParsing="false" onAction="#translate" prefHeight="51.0" prefWidth="132.0" text="Translate" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
