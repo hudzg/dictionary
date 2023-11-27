@@ -8,6 +8,7 @@ import java.io.*;
 import java.util.*;
 
 public class DictionaryManagement extends Dictionary {
+    private String DestinationFilePath;
     public DictionaryManagement() {
         super();
     }
@@ -140,7 +141,7 @@ public class DictionaryManagement extends Dictionary {
     }
 
     public void dictionaryExportToFile() {
-        String DestinationFilePath = "src/main/java/Dictionary/dictionary/dictionary.txt";
+        //String  = "src/main/java/Dictionary/dictionary/dictionary.txt";
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(DestinationFilePath))) {
 
             //int cnt = 0;
@@ -255,7 +256,7 @@ public class DictionaryManagement extends Dictionary {
             }
             addWord(target, explain);
             fileInput.close();
-            System.out.println(target);
+          //  System.out.println(target);
 
 
         } catch (FileNotFoundException e) {
@@ -269,6 +270,7 @@ public class DictionaryManagement extends Dictionary {
 //        System.out.println(file.canRead());
         try {
             File file = new File(path);
+            DestinationFilePath = path;
 
             Scanner fileInput = new Scanner(file);
             String target = "";
