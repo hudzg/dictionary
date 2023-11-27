@@ -78,7 +78,7 @@ public class DictionaryCommandline extends DictionaryManagement {
         DictionaryCommandline dictionaryCommandline = new DictionaryCommandline();
         dictionaryCommandline.insertFromFile();
 //        dictionaryCommandline.showAllWords();
-        dictionaryCommandline.words[0].setWordTarget("a");
+  //      dictionaryCommandline.words[0].setWordTarget("a");
         dictionaryCommandline.dictionaryAdvanced();
 
     }
