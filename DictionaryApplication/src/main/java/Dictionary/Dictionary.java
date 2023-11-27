@@ -9,12 +9,11 @@ public class Dictionary {
 
     protected int wordSize;
     protected Word[] words;
-    protected Map<String, String> dictionary;
     protected Trie trie;
 
     public Dictionary() {
         words = new Word[1000010];
-        dictionary = new TreeMap<>();
+      //  dictionary = new TreeMap<>();
         wordSize = 0;
         trie = new Trie();
     }
