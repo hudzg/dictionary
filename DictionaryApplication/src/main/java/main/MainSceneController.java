@@ -26,10 +26,13 @@ public class MainSceneController implements Initializable {
 
     private static final String MY_DICTIONARY = "My Dictionary";
     private static final String ENGLISH_DICTIONARY = "English Dictionary";
+    private static final int OTHER_STATE = 0;
+    private static final int SEARCH_STATE = 1;
     private static final int duration = 300;
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private int state;
 
     @FXML
     private AnchorPane shadowPane;
@@ -46,8 +49,6 @@ public class MainSceneController implements Initializable {
     @FXML
     private Button translateButton;
     @FXML
-    private Button removeButton;
-    @FXML
     private Button dictionaryTypeButton;
     @FXML
     private VBox dashboard;
@@ -59,6 +60,7 @@ public class MainSceneController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        state = OTHER_STATE;
         shadowPane.setVisible(false);
         dashboard.setLayoutX(-200);
         menuImageView.setImage(menuImg);
@@ -98,15 +100,6 @@ public class MainSceneController implements Initializable {
         translateButton.addEventHandler(MouseEvent.MOUSE_EXITED,
 //                e -> searchButton.setOpacity(1));
                 e -> translateButton.setStyle("-fx-background-color: #683ab7;" +
-                        "-fx-background-radius: 16;"));
-        removeButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
-//                e -> searchButton.setOpacity(0.8));
-                e -> removeButton.setStyle("-fx-background-color: #7f57c2;" +
-                        "-fx-background-radius: 16;"));
-
-        removeButton.addEventHandler(MouseEvent.MOUSE_EXITED,
-//                e -> searchButton.setOpacity(1));
-                e -> removeButton.setStyle("-fx-background-color: #683ab7;" +
                         "-fx-background-radius: 16;"));
         modifyButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
 //                e -> searchButton.setOpacity(0.8));
@@ -175,7 +168,19 @@ public class MainSceneController implements Initializable {
     }
 
     public void clickSearchButton(ActionEvent event) throws IOException {
+        state = SEARCH_STATE;
         setDashboardHidden();
+        AnchorPane search = FXMLLoader.load(getClass().getResource("SearchScene.fxml"));
+        removeOthers(event);
+
+        while (!search.getChildren().isEmpty())
+            ((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().add(0, search.getChildren().get(0));
+
+    }
+
+    public void clickSearchButton(ActionEvent event, boolean hideDashboard) throws IOException {
+        state = SEARCH_STATE;
+        if(hideDashboard) setDashboardHidden();
         AnchorPane dashboard = FXMLLoader.load(getClass().getResource("MainScene.fxml"));
         AnchorPane search = FXMLLoader.load(getClass().getResource("SearchScene.fxml"));
 //        AnchorPane root = new AnchorPane();
@@ -216,6 +221,7 @@ public class MainSceneController implements Initializable {
     }
 
     public void clickGameButton(ActionEvent event) throws IOException {
+        state = OTHER_STATE;
         setDashboardHidden();
         AnchorPane dashboard = FXMLLoader.load(getClass().getResource("MainScene.fxml"));
         AnchorPane game = FXMLLoader.load(getClass().getResource("GameScene.fxml"));
@@ -238,6 +244,7 @@ public class MainSceneController implements Initializable {
     }
 
     public void clickTranslateButton(ActionEvent event) throws IOException {
+        state = OTHER_STATE;
         setDashboardHidden();
         AnchorPane dashboard = FXMLLoader.load(getClass().getResource("MainScene.fxml"));
         AnchorPane translate = FXMLLoader.load(getClass().getResource("TranslateScene.fxml"));
@@ -260,6 +267,7 @@ public class MainSceneController implements Initializable {
     }
 
     public void clickAddButton(ActionEvent event) throws IOException {
+        state = OTHER_STATE;
         setDashboardHidden();
         AnchorPane dashboard = FXMLLoader.load(getClass().getResource("MainScene.fxml"));
         AnchorPane translate = FXMLLoader.load(getClass().getResource("AddScene2.fxml"));
@@ -271,6 +279,7 @@ public class MainSceneController implements Initializable {
     }
 
     public void clickModifyButton(ActionEvent event) throws IOException {
+        state = OTHER_STATE;
         setDashboardHidden();
         AnchorPane dashboard = FXMLLoader.load(getClass().getResource("MainScene.fxml"));
         AnchorPane translate = FXMLLoader.load(getClass().getResource("ModifyScene.fxml"));
@@ -280,26 +289,16 @@ public class MainSceneController implements Initializable {
         while (!translate.getChildren().isEmpty())
             ((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().add(0, translate.getChildren().get(0));
     }
-    public void clickRemoveButton(ActionEvent event) throws IOException {
-        setDashboardHidden();
-        AnchorPane dashboard = FXMLLoader.load(getClass().getResource("MainScene.fxml"));
-        AnchorPane translate = FXMLLoader.load(getClass().getResource("removeScene.fxml"));
-        //AnchorPane translate = FXMLLoader.load(getClass().getResource("nhap.fxml"));
 
-        removeOthers(event);
-
-        while (!translate.getChildren().isEmpty())
-            ((AnchorPane) ((Node) (event.getSource())).getScene().getRoot()).getChildren().add(0, translate.getChildren().get(0));
-    }
-
-    public void clickDictionaryTypeButton(ActionEvent event){
-        if(dictionaryTypeButton.getText().equals(MY_DICTIONARY)) {
+    public void clickDictionaryTypeButton(ActionEvent event) throws IOException {
+        if (dictionaryTypeButton.getText().equals(MY_DICTIONARY)) {
             dictionaryTypeButton.setText(ENGLISH_DICTIONARY);
             Main.dictionaryManagement = Main.englishDict;
-        }
-        else {
+            if(state == SEARCH_STATE) clickSearchButton(event, false);
+        } else {
             dictionaryTypeButton.setText(MY_DICTIONARY);
             Main.dictionaryManagement = Main.myDict;
+            if(state == SEARCH_STATE) clickSearchButton(event, false);
         }
     }
 }

@@ -30,7 +30,7 @@ import java.util.ResourceBundle;
 public class SearchController implements Initializable {
     @FXML
     private TextField textField;
-//    @FXML
+    //    @FXML
 //    private Button searchButton;
     @FXML
     private ListView<String> listView;
@@ -38,6 +38,8 @@ public class SearchController implements Initializable {
     private Button removeButton;
     @FXML
     private Button speakButton;
+    @FXML
+    private Button addButton;
 
     private String selectedString;
 
@@ -60,6 +62,7 @@ public class SearchController implements Initializable {
         wordPane.setVisible(false);
         meaningPane.setVisible(false);
         removeButton.setVisible(false);
+        addButton.setVisible(false);
         textField.focusedProperty().addListener((observable, oldValue, newValue) -> {
 //            System.out.println("text");
             if (newValue) {
@@ -81,6 +84,8 @@ public class SearchController implements Initializable {
 
         removeButton.setStyle("-fx-background-color: #683ab7;" +
                 "-fx-background-radius: 16;");
+        addButton.setStyle("-fx-background-color: #683ab7;" +
+                "-fx-background-radius: 16;");
         speakButton.setStyle("-fx-background-color: #683ab7;" +
                 "-fx-background-radius: 16;");
 
@@ -92,6 +97,16 @@ public class SearchController implements Initializable {
         removeButton.addEventHandler(MouseEvent.MOUSE_EXITED,
 //                e -> searchButton.setOpacity(1));
                 e -> removeButton.setStyle("-fx-background-color: #683ab7;" +
+                        "-fx-background-radius: 16;"));
+
+        addButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
+//                e -> searchButton.setOpacity(0.8));
+                e -> addButton.setStyle("-fx-background-color: #7f57c2;" +
+                        "-fx-background-radius: 16;"));
+
+        addButton.addEventHandler(MouseEvent.MOUSE_EXITED,
+//                e -> searchButton.setOpacity(1));
+                e -> addButton.setStyle("-fx-background-color: #683ab7;" +
                         "-fx-background-radius: 16;"));
 
         speakButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
@@ -164,6 +179,8 @@ public class SearchController implements Initializable {
         wordPane.setVisible(true);
         meaningPane.setVisible(true);
         removeButton.setVisible(true);
+        if (Main.dictionaryManagement == Main.englishDict)
+            addButton.setVisible(true);
         wordLabel.setText(word);
         meaningLabel.setText(meaning);
         wordLabel.toFront();
@@ -176,17 +193,29 @@ public class SearchController implements Initializable {
         alert.setTitle("");
         alert.setHeaderText("Do you want to remove \"" + selectedString + "\" ?");
 
-        if(alert.showAndWait().get() == ButtonType.OK){
+        if (alert.showAndWait().get() == ButtonType.OK) {
             System.out.println(selectedString);
             Main.dictionaryManagement.removeFromApp(selectedString);
             wordPane.setVisible(false);
             meaningPane.setVisible(false);
             removeButton.setVisible(false);
             listView.setVisible(false);
+            addButton.setVisible(false);
             textField.setText("");
             selectedString = "";
             listView.getItems().clear();
             textField.getParent().requestFocus();
+        }
+    }
+
+    public void clickAddButton() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("");
+        alert.setHeaderText("Do you want to add \"" + selectedString + "\" ?");
+
+        if (alert.showAndWait().get() == ButtonType.OK) {
+            System.out.println(selectedString);
+            Main.myDict.addWord(selectedString, Main.dictionaryManagement.dictionaryLookup(selectedString));
         }
     }
 

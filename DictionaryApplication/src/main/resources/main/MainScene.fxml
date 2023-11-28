@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.MainSceneController">
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" style="-fx-background: #FFFFFF; -fx-background-color: transparent;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.MainSceneController">
    <children>
       <AnchorPane fx:id="headerPane" prefHeight="51.0" prefWidth="1366.0" style="-fx-background-color: #321b92;">
          <children>
@@ -43,13 +43,6 @@
                </font>
             </Button>
             <Button fx:id="addButton" mnemonicParsing="false" onAction="#clickAddButton" prefHeight="62.0" prefWidth="202.0" style="-fx-background-color: #683ab7;" text="Add" textFill="WHITE">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
-
-            <Button fx:id="removeButton" mnemonicParsing="false" onAction="#clickTranslateButton" prefHeight="62.0" prefWidth="202.0" style="-fx-background-color: #683ab7;" text="Remove" textFill="WHITE">
-
                <font>
                   <Font size="24.0" />
                </font>

@@ -1,0 +1,14 @@
+.root{
+    -fx-background-color: #FFFFFF;
+}
+
+.root .viewport{
+    -fx-background-color: transparent;
+}
+.root .content{
+    -fx-background-color: transparent;
+}
+
+.button{
+
+}

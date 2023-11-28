@@ -18,12 +18,12 @@ public class ModifyController implements Initializable {
     private Label newMeaningTitle;
 
     @FXML
-    private TextArea wordArea;
+    private TextField wordArea;
     @FXML
     private TextArea changeMeaningArea;
 
     @FXML
-    private Button okButton;
+    private Button modifyButton;
 
     @FXML
     public ListView<String> listView;
@@ -36,6 +36,56 @@ public class ModifyController implements Initializable {
         wordArea.setVisible(true);
         changeMeaningArea.setVisible(true);
         listView.setVisible(false);
+
+        changeMeaningArea.focusedProperty().addListener((observable, oldValue, newValue) -> {
+//            System.out.println("text");
+            if (newValue) {
+                changeMeaningArea.setStyle("-fx-border-color: #673AB7; -fx-border-width: 2px; " +
+                        "-fx-border-radius: 20;" +
+                        "-fx-background-radius: 20;" +
+                        "-fx-background-color: #FFFFFF;");
+            }
+        });
+
+        changeMeaningArea.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                changeMeaningArea.setStyle("-fx-border-color: #000000; -fx-border-width: 1px;" +
+                        "-fx-border-radius: 20;" +
+                        "-fx-background-radius: 20;" +
+                        "-fx-background-color: #FFFFFF;");
+            }
+        });
+
+        wordArea.focusedProperty().addListener((observable, oldValue, newValue) -> {
+//            System.out.println("text");
+            if (newValue) {
+                wordArea.setStyle("-fx-border-color: #673AB7; -fx-border-width: 2px; " +
+                        "-fx-border-radius: 20 20 0 0;" +
+                        "-fx-background-radius: 20 20 0 0;");
+                listView.setVisible(true);
+            }
+        });
+
+        wordArea.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                wordArea.setStyle("-fx-border-color: #000000; -fx-border-width: 1px;" +
+                        "-fx-border-radius: 20;" +
+                        "-fx-background-radius: 20;");
+                listView.setVisible(false);
+            }
+        });
+
+        modifyButton.setStyle("-fx-background-color: #683ab7;" +
+                "-fx-background-radius: 16;");
+        modifyButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
+//                e -> searchButton.setOpacity(0.8));
+                e -> modifyButton.setStyle("-fx-background-color: #7f57c2;" +
+                        "-fx-background-radius: 16;"));
+
+        modifyButton.addEventHandler(MouseEvent.MOUSE_EXITED,
+//                e -> searchButton.setOpacity(1));
+                e -> modifyButton.setStyle("-fx-background-color: #683ab7;" +
+                        "-fx-background-radius: 16;"));
     }
 
 
