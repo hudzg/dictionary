@@ -24,12 +24,12 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <TextArea fx:id="FieldNewWord" layoutX="105.0" layoutY="155.0" prefHeight="172.0" prefWidth="410.0" style="-fx-background-radius: 16; -fx-border-radius: 16; -fx-background-color: #FFFFFF; -fx-border-width: 1; -fx-border-color: #000000;" stylesheets="@css/Modifycss.css">
+      <TextArea fx:id="FieldNewWord" layoutX="105.0" layoutY="155.0" prefHeight="172.0" prefWidth="410.0" style="-fx-background-radius: 16; -fx-border-radius: 16; -fx-background-color: #FFFFFF; -fx-border-width: 1; -fx-border-color: #000000;" stylesheets="@css/Main.css">
          <font>
             <Font size="18.0" />
          </font>
       </TextArea>
-      <TextArea fx:id="FieldMeaning" layoutX="542.0" layoutY="155.0" prefHeight="172.0" prefWidth="410.0" style="-fx-background-radius: 16; -fx-background-color: #FFFFFF; -fx-border-radius: 16; -fx-border-width: 1; -fx-border-color: #000000;" stylesheets="@css/Modifycss.css">
+      <TextArea fx:id="FieldMeaning" layoutX="542.0" layoutY="155.0" prefHeight="172.0" prefWidth="410.0" style="-fx-background-radius: 16; -fx-background-color: #FFFFFF; -fx-border-radius: 16; -fx-border-width: 1; -fx-border-color: #000000;" stylesheets="@css/Main.css">
          <font>
             <Font size="18.0" />
          </font>

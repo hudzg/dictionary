@@ -25,13 +25,13 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <TextArea fx:id="changeMeaningArea" layoutX="502.0" layoutY="124.0" onMousePressed="#selectWord" prefHeight="365.0" prefWidth="454.0" style="-fx-background-radius: 16; -fx-border-radius: 16; -fx-background-color: #FFFFFF; -fx-border-width: 1; -fx-border-color: #000000;" stylesheets="@css/Modifycss.css">
+      <TextArea fx:id="changeMeaningArea" layoutX="502.0" layoutY="124.0" onMousePressed="#selectWord" prefHeight="365.0" prefWidth="454.0" style="-fx-background-radius: 16; -fx-border-radius: 16; -fx-background-color: #FFFFFF; -fx-border-width: 1; -fx-border-color: #000000;" stylesheets="@css/Main.css">
          <font>
             <Font size="24.0" />
          </font></TextArea>
       <Accordion />
       <ListView fx:id="listView" layoutX="31.0" layoutY="177.0" onMouseClicked="#selectWord" prefHeight="310.0" prefWidth="454.0" style="-fx-border-radius: 0 0 20 20; -fx-background-radius: 0 0 20 20; -fx-border-color: #673AB7; -fx-border-width: 2;" />
-      <TextField fx:id="wordArea" layoutX="31.0" layoutY="124.0" onKeyTyped="#typingWords" prefHeight="51.0" prefWidth="454.0">
+      <TextField fx:id="wordArea" layoutX="31.0" layoutY="124.0" onKeyTyped="#typingWords" prefHeight="51.0" prefWidth="454.0" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-border-color: #000000; -fx-border-width: 1;">
          <font>
             <Font size="24.0" />
          </font>

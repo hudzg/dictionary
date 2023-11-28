@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.TranslateSceneController">
    <children>
-      <ScrollPane layoutX="795.0" layoutY="195.0" prefHeight="300.0" prefWidth="500.0" style="-fx-background-radius: 16; -fx-border-radius: 16; -fx-border-width: 1; -fx-border-color: #000000;" stylesheets="@css/Modifycss.css">
+      <ScrollPane layoutX="795.0" layoutY="195.0" prefHeight="300.0" prefWidth="500.0" style="-fx-background-radius: 16; -fx-border-radius: 16; -fx-border-width: 1; -fx-border-color: #000000;" stylesheets="@css/Main.css">
          <content>
             <Label fx:id="translatedText" maxWidth="-Infinity" text="Bản dịch">
                <font>
@@ -24,9 +24,9 @@
             <String fx:value="root" />
          </styleClass>
       </ScrollPane>
-      <ScrollPane layoutX="163.0" layoutY="197.0" prefHeight="300.0" prefWidth="500.0" style="-fx-background-radius: 16; -fx-border-radius: 16;" stylesheets="@css/Modifycss.css">
+      <ScrollPane layoutX="163.0" layoutY="197.0" prefHeight="300.0" prefWidth="500.0" style="-fx-background-radius: 16; -fx-border-radius: 16;" stylesheets="@css/Main.css">
          <content>
-            <TextArea fx:id="text" prefHeight="291.0" prefWidth="498.0" style="-fx-background-radius: 16; -fx-border-radius: 16; -fx-background-color: #FFFFFF; -fx-border-width: 1; -fx-border-color: #000000;" stylesheets="@css/Modifycss.css">
+            <TextArea fx:id="text" prefHeight="291.0" prefWidth="498.0" style="-fx-background-radius: 16; -fx-border-radius: 16; -fx-background-color: #FFFFFF; -fx-border-width: 1; -fx-border-color: #000000;" stylesheets="@css/Main.css">
                <font>
                   <Font size="24.0" />
                </font>
