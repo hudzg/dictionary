@@ -131,6 +131,14 @@ public class DictionaryManagement extends Dictionary {
     }
 
     public List<String> dictionarySearcher(String sample) {
+        if(sample.isEmpty())
+        {
+            List<String> stringList = new ArrayList<>();
+            for(int i = 0; i < wordSize; i++){
+                stringList.add(words[i].getWordTarget());
+            }
+            return stringList;
+        }
         int len = sample.length();
 
         List<String> stringList = new ArrayList<>();

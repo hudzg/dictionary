@@ -13,12 +13,12 @@
 
 <AnchorPane onKeyTyped="#typingWords" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ModifyController">
    <children>
-      <Button fx:id="modifyButton" layoutX="598.0" layoutY="579.0" mnemonicParsing="false" onAction="#ClickOkButton" prefHeight="54.0" prefWidth="123.0" style="-fx-background-radius: 20;" textFill="WHITE">
+      <Button fx:id="modifyButton" layoutX="607.0" layoutY="581.0" mnemonicParsing="false" onAction="#ClickOkButton" prefHeight="65.0" prefWidth="120.0" style="-fx-background-radius: 20;" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="42.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="38.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/modifypng.png" />
                </image>

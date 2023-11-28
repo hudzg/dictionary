@@ -35,11 +35,20 @@ public class GameSceneController implements Initializable {
     private Label timeLabel;
     @FXML
     private HBox HPBar;
+    @FXML
+    private Label timeLabelSB;
+    @FXML
+    private Label winLabel;
     private int[][] wordItem;
     private GameListener gameListener;
     private int lastIdx;
     private int HP;
+    private int numCorrect;
     private final Image HPImg = new Image(getClass().getResourceAsStream("img/heart.png"));
+    @FXML
+    private AnchorPane scoreBoard;
+    @FXML
+    private Button restartButton;
     AnimationTimer timer = new AnimationTimer() {
         private long timestamp = 0;
         private long time = 0;
@@ -50,7 +59,8 @@ public class GameSceneController implements Initializable {
             // current time adjusted by remaining time from last run
             timestamp = System.currentTimeMillis() - fraction;
             time = 0;
-            timeLabel.setText("Time: " + time);
+            timeLabel.setText("Time: " + time + "s");
+            timeLabelSB.setText("Your time: " + time + "s");
             super.start();
         }
 
@@ -68,7 +78,8 @@ public class GameSceneController implements Initializable {
                 long deltaT = (newTime - timestamp) / 1000;
                 time += deltaT;
                 timestamp += 1000 * deltaT;
-                timeLabel.setText("Time: " + time);
+                timeLabel.setText("Time: " + time + "s");
+                timeLabelSB.setText("Your time: " + time + "s");
             }
         }
     };
@@ -94,6 +105,9 @@ public class GameSceneController implements Initializable {
 //                        for (int k = 0; k < gridPane.getChildren().size(); k++)
 //                            System.out.println(gridPane.getChildren().get(i).getClass());
                     }
+            if(++numCorrect == numRow * numColumn / 2){
+                winScoreBoard();
+            }
         } else {
             decreaseHP();
             for (int i = 0; i < numRow; i++)
@@ -111,6 +125,8 @@ public class GameSceneController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        numCorrect = 0;
+        scoreBoard.setVisible(false);
         playButton.setStyle("-fx-background-color: #683ab7;" +
                 "-fx-background-radius: 16;");
         playButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
@@ -121,6 +137,18 @@ public class GameSceneController implements Initializable {
         playButton.addEventHandler(MouseEvent.MOUSE_EXITED,
 //                e -> searchButton.setOpacity(1));
                 e -> playButton.setStyle("-fx-background-color: #683ab7;" +
+                        "-fx-background-radius: 16;"));
+
+        restartButton.setStyle("-fx-background-color: #683ab7;" +
+                "-fx-background-radius: 16;");
+        restartButton.addEventHandler(MouseEvent.MOUSE_ENTERED,
+//                e -> searchButton.setOpacity(0.8));
+                e -> restartButton.setStyle("-fx-background-color: #7f57c2;" +
+                        "-fx-background-radius: 16;"));
+
+        restartButton.addEventHandler(MouseEvent.MOUSE_EXITED,
+//                e -> searchButton.setOpacity(1));
+                e -> restartButton.setStyle("-fx-background-color: #683ab7;" +
                         "-fx-background-radius: 16;"));
         gridPane.setVisible(false);
         lastIdx = flagNum;
@@ -182,11 +210,29 @@ public class GameSceneController implements Initializable {
         }
     }
 
+    public void winScoreBoard() {
+        winLabel.setText("You win!");
+        scoreBoard.setVisible(true);
+        timer.stop();
+    }
+
+    public void loseScoreBoard() {
+        winLabel.setText("You lose!");
+        timeLabelSB.setText("");
+        scoreBoard.setVisible(true);
+        timer.stop();
+    }
+
     private void decreaseHP() {
-        setHP(Math.max(0, HP - 1));
+        if (HP == 0) return;
+        setHP(HP - 1);
+        if (HP == 0) {
+            loseScoreBoard();
+        }
     }
 
     public void playGame() {
+        numCorrect = 0;
         setHP(INIT_HP);
         timer.start();
 //        timer.stop();
@@ -244,6 +290,11 @@ public class GameSceneController implements Initializable {
 
     public void clickPlayButton(ActionEvent event) {
 //        playButton.setVisible(false);
+        playGame();
+    }
+
+    public void clickRestartButton(ActionEvent event) {
+        scoreBoard.setVisible(false);
         playGame();
     }
 }

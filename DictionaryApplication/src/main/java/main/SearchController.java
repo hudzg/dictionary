@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -70,6 +71,8 @@ public class SearchController implements Initializable {
                         "-fx-border-radius: 20 20 0 0;" +
                         "-fx-background-radius: 20 20 0 0;");
                 listView.setVisible(true);
+                if (listView.getItems().isEmpty())
+                    listView.getItems().addAll(Main.dictionaryManagement.dictionarySearcher(""));
             }
         });
 

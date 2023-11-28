@@ -29,7 +29,7 @@ public class ModifyController implements Initializable {
     public ListView<String> listView;
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle){
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         wordTitle.setVisible(true);
         newMeaningTitle.setVisible(true);
 
@@ -63,6 +63,8 @@ public class ModifyController implements Initializable {
                         "-fx-border-radius: 20 20 0 0;" +
                         "-fx-background-radius: 20 20 0 0;");
                 listView.setVisible(true);
+                if (listView.getItems().isEmpty())
+                    listView.getItems().addAll(Main.dictionaryManagement.dictionarySearcher(""));
             }
         });
 
@@ -89,7 +91,7 @@ public class ModifyController implements Initializable {
     }
 
 
-    public void typingWords(KeyEvent event){
+    public void typingWords(KeyEvent event) {
         String text = wordArea.getText();
         listView.getItems().clear();
         listView.getItems().addAll(Main.dictionaryManagement.dictionarySearcher(text));
@@ -102,9 +104,9 @@ public class ModifyController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("");
         alert.setHeaderText("Are you sure you want to change ?");
-      //  alert.setContentText("Do you want to save before exiting?: ");
+        //  alert.setContentText("Do you want to save before exiting?: ");
 
-        if(alert.showAndWait().get() == ButtonType.OK){
+        if (alert.showAndWait().get() == ButtonType.OK) {
             String word = wordArea.getText();
             String newMeaning = changeMeaningArea.getText();
             Main.dictionaryManagement.changeMeaning(word, newMeaning);
