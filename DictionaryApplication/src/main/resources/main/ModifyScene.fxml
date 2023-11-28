@@ -6,32 +6,41 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane onKeyTyped="#typingWords" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ModifyController">
    <children>
-      <Button fx:id="modifyButton" layoutX="451.0" layoutY="507.0" mnemonicParsing="false" onAction="#ClickOkButton" prefHeight="54.0" prefWidth="102.0" style="-fx-background-radius: 20;" text="Modify" textFill="WHITE">
+      <Button fx:id="modifyButton" layoutX="598.0" layoutY="579.0" mnemonicParsing="false" onAction="#ClickOkButton" prefHeight="54.0" prefWidth="123.0" style="-fx-background-radius: 20;" textFill="WHITE">
          <font>
             <Font size="18.0" />
-         </font></Button>
-      <Label fx:id="wordTitle" alignment="CENTER" contentDisplay="CENTER" layoutX="25.0" layoutY="78.0" prefHeight="35.0" prefWidth="454.0" text="a word/phrase/line">
+         </font>
+         <graphic>
+            <ImageView fitHeight="42.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/modifypng.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Label fx:id="wordTitle" alignment="CENTER" contentDisplay="CENTER" layoutX="160.0" layoutY="126.0" prefHeight="35.0" prefWidth="454.0" text="Word">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="newMeaningTitle" alignment="CENTER" layoutX="502.0" layoutY="78.0" prefHeight="35.0" prefWidth="454.0" text="change meaning">
+      <Label fx:id="newMeaningTitle" alignment="CENTER" layoutX="667.0" layoutY="126.0" prefHeight="35.0" prefWidth="500.0" text="Change meaning">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <TextArea fx:id="changeMeaningArea" layoutX="502.0" layoutY="124.0" onMousePressed="#selectWord" prefHeight="365.0" prefWidth="454.0" style="-fx-background-radius: 16; -fx-border-radius: 16; -fx-background-color: #FFFFFF; -fx-border-width: 1; -fx-border-color: #000000;" stylesheets="@css/Main.css">
+      <TextArea fx:id="changeMeaningArea" layoutX="667.0" layoutY="200.0" onMousePressed="#selectWord" prefHeight="300.0" prefWidth="500.0" style="-fx-background-radius: 16; -fx-border-radius: 16; -fx-background-color: #FFFFFF; -fx-border-width: 1; -fx-border-color: #000000;" stylesheets="@css/Main.css">
          <font>
             <Font size="24.0" />
          </font></TextArea>
       <Accordion />
-      <ListView fx:id="listView" layoutX="31.0" layoutY="177.0" onMouseClicked="#selectWord" prefHeight="310.0" prefWidth="454.0" style="-fx-border-radius: 0 0 20 20; -fx-background-radius: 0 0 20 20; -fx-border-color: #673AB7; -fx-border-width: 2;" />
-      <TextField fx:id="wordArea" layoutX="31.0" layoutY="124.0" onKeyTyped="#typingWords" prefHeight="51.0" prefWidth="454.0" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-border-color: #000000; -fx-border-width: 1;">
+      <ListView fx:id="listView" layoutX="160.0" layoutY="253.0" onMouseClicked="#selectWord" prefHeight="250.0" prefWidth="490.0" style="-fx-border-radius: 0 0 20 20; -fx-background-radius: 0 0 20 20; -fx-border-color: #673AB7; -fx-border-width: 2;" />
+      <TextField fx:id="wordArea" layoutX="160.0" layoutY="200.0" onKeyTyped="#typingWords" prefHeight="53.0" prefWidth="490.0" promptText="Type" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-border-color: #000000; -fx-border-width: 1;">
          <font>
             <Font size="24.0" />
          </font>

@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -38,10 +40,17 @@
             <String fx:value="root" />
          </styleClass>
       </ScrollPane>
-      <Button fx:id="translateButton" layoutX="663.0" layoutY="321.0" mnemonicParsing="false" onAction="#translate" prefHeight="51.0" prefWidth="132.0" text="Translate" textFill="WHITE">
+      <Button fx:id="translateButton" layoutX="676.0" layoutY="327.0" mnemonicParsing="false" onAction="#translate" prefHeight="46.0" prefWidth="106.0" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/erow.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Button>
    </children>
 </AnchorPane>

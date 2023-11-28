@@ -5,6 +5,8 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -28,27 +30,48 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button fx:id="speakButton" layoutX="497.0" mnemonicParsing="false" onAction="#speak" prefHeight="51.0" prefWidth="132.0" text="Speak" textFill="WHITE">
+            <Button fx:id="speakButton" layoutX="497.0" mnemonicParsing="false" onAction="#speak" prefHeight="41.0" prefWidth="100.0" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="41.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/speaker.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
          </children>
       </Pane>
-      <Button fx:id="removeButton" layoutX="866.0" layoutY="207.0" mnemonicParsing="false" onAction="#clickRemoveButton" prefHeight="41.0" prefWidth="132.0" text="Remove" textFill="WHITE">
+      <Button fx:id="removeButton" layoutX="866.0" layoutY="207.0" mnemonicParsing="false" onAction="#clickRemoveButton" prefHeight="41.0" prefWidth="100.0" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="41.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/trashcan.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Button>
       <TextField fx:id="textField" layoutX="191.0" layoutY="72.0" onKeyTyped="#search" prefHeight="51.0" prefWidth="629.0" promptText="Search" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-border-color: #000000; -fx-border-width: 1;">
          <font>
             <Font size="24.0" />
          </font>
       </TextField>
-      <Button fx:id="addButton" layoutX="1022.0" layoutY="207.0" mnemonicParsing="false" onAction="#clickAddButton" prefHeight="41.0" prefWidth="132.0" text="Add" textFill="WHITE">
+      <Button fx:id="addButton" layoutX="1003.0" layoutY="207.0" mnemonicParsing="false" onAction="#clickAddButton" prefHeight="41.0" prefWidth="100.0" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="41.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/mmrize.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Button>
    </children>
 </AnchorPane>
