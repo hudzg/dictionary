@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -19,6 +20,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+//        stage.getIcons().add(new Image("D:\\TIN HOC\\javaOOP\\project\\DictionaryApplication\\src\\main\\resources\\main\\img\\Englishapp.png"));
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("img/Englishapp.png")));
         AnchorPane dashboard = FXMLLoader.load(getClass().getResource("MainScene.fxml"));
 //        AnchorPane search = FXMLLoader.load(getClass().getResource("SearchScene.fxml"));
         AnchorPane root = new AnchorPane();
