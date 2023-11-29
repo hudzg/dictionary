@@ -166,8 +166,9 @@ public class GameSceneController implements Initializable {
         };
         Random random = new Random();
         for (int i = 0; i < numRow * numColumn / 2; i++) {
-            int idx = random.nextInt(1000) + 1;
-            while (isExist(idx)) idx = random.nextInt(1000) + 1;
+            int idx = random.nextInt(Main.dictionaryManagement.getWordSize());
+            while (isExist(idx)) idx = random.nextInt(Main.dictionaryManagement.getWordSize());
+//            System.out.println(idx);
             int x = random.nextInt(numRow), y = random.nextInt(numColumn);
             while (wordItem[x][y] != flagNum) {
                 x = random.nextInt(numRow);
@@ -255,8 +256,8 @@ public class GameSceneController implements Initializable {
         };
         Random random = new Random();
         for (int i = 0; i < numRow * numColumn / 2; i++) {
-            int idx = random.nextInt(1000) + 1;
-            while (isExist(idx)) idx = random.nextInt(1000) + 1;
+            int idx = random.nextInt(Main.dictionaryManagement.getWordSize());
+            while (isExist(idx)) idx = random.nextInt(Main.dictionaryManagement.getWordSize());
             int x = random.nextInt(numRow), y = random.nextInt(numColumn);
             while (wordItem[x][y] != flagNum) {
                 x = random.nextInt(numRow);
