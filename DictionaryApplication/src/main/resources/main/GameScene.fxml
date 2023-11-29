@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -16,10 +18,17 @@
          <children>
             <Pane layoutX="483.0" layoutY="232.0" prefHeight="250.0" prefWidth="400.0" style="-fx-border-color: #683ab7; -fx-background-color: #FFFFFF; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-width: 2;">
                <children>
-                  <Button fx:id="restartButton" layoutX="147.0" layoutY="169.0" mnemonicParsing="false" onAction="#clickRestartButton" text="Restart" textFill="WHITE">
+                  <Button fx:id="restartButton" layoutX="162.0" layoutY="168.0" mnemonicParsing="false" onAction="#clickRestartButton" prefHeight="56.0" prefWidth="77.0" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/replay.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
                   <Label fx:id="winLabel" layoutX="152.0" layoutY="35.0" text="You Win!">
                      <font>
@@ -48,10 +57,17 @@
           <RowConstraints vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <Button fx:id="playButton" layoutX="645.0" layoutY="359.0" mnemonicParsing="false" onAction="#clickPlayButton" text="Play" textFill="WHITE">
+      <Button fx:id="playButton" layoutX="645.0" layoutY="359.0" mnemonicParsing="false" onAction="#clickPlayButton" prefHeight="51.0" prefWidth="77.0" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/—Pngtree—play%20icon_4602496.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Button>
       <Label fx:id="timeLabel" layoutX="1058.0" layoutY="137.0" text="Time: 0">
          <font>

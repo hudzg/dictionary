@@ -23,11 +23,6 @@ public class DictionaryCommandline extends DictionaryManagement {
         }
     }
 
-    public void dictionaryBasic() {
-        insertFromCommandline();
-        showAllWords();
-    }
-
     public void displayMenu(){
         clearScreen();
         System.out.println("Welcome to My Application!\n" +

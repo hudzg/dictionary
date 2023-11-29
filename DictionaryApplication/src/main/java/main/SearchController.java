@@ -214,7 +214,7 @@ public class SearchController implements Initializable {
     public void clickAddButton() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("");
-        alert.setHeaderText("Do you want to add \"" + selectedString + "\" ?");
+        alert.setHeaderText("Do you want to add \"" + selectedString + "\" to your dictionary ?");
 
         if (alert.showAndWait().get() == ButtonType.OK) {
             System.out.println(selectedString);

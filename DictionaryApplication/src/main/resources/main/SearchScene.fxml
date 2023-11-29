@@ -30,7 +30,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button fx:id="speakButton" layoutX="497.0" mnemonicParsing="false" onAction="#speak" prefHeight="41.0" prefWidth="100.0" textFill="WHITE">
+            <Button fx:id="speakButton" layoutX="530.0" mnemonicParsing="false" onAction="#speak" prefHeight="41.0" prefWidth="100.0" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
