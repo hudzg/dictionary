@@ -7,6 +7,7 @@
 HugNht Dictionary là một ứng dụng từ điển tiếng Anh đơn giản được viết bằng ngôn ngữ lập trình Java và sử dụng thư viện JavaFX để tạo giao diện đồ hoạ. Ứng dụng này mang lại trải nghiệm dễ sử dụng và thân thiện với người dùng, đặc biệt hữu ích cho những người muốn tra cứu từ vựng tiếng Anh một cách nhanh chóng.
 
 Đặc điểm chính:
+* Có hai loại từ điển: General English Dictionary và My English Dictionary phù hợp với nhu cầu tự học.
 
 * Giao diện đồ hoạ thân thiện: HugNht Dictionary có một giao diện người dùng đồ hoạ, với cửa sổ tìm kiếm chính giữa màn hình. Giao diện được thiết kế đơn giản để tối ưu hóa trải nghiệm người dùng.
 
