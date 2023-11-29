@@ -22,7 +22,8 @@ HugNht Dictionary là một ứng dụng từ điển tiếng Anh đơn giản �
 HugNht Dictionary là một ứng dụng linh hoạt, phù hợp cho cả người học tiếng Anh cơ bản và những người muốn mở rộng vốn từ vựng của mình.
 
 Một số hình ảnh:
-![image](https://github.com/hudzg/dictionary/assets/106372669/4302ce55-57ea-44a3-b38b-82219f558111)
+![app](https://github.com/hudzg/dictionary/assets/106372669/49bc4ef2-2cf6-4b65-bc75-dead1fce7d61)
+
 ![image](https://github.com/hudzg/dictionary/assets/106372669/fd6c4950-3b43-47df-8c3e-aa18ef79d778)
 
 
