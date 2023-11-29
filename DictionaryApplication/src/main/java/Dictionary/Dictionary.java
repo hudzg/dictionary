@@ -24,6 +24,14 @@ public class Dictionary {
         words[wordSize++] = new Word(target, explain);
     }
 
+    public int getWordSize(){
+        return wordSize;
+    }
+
+    public Word getWord(int i) {
+        return words[i];
+    }
+
     public String getTargetAt(int pos) {
         return words[pos].getWordTarget();
     }
