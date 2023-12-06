@@ -26,6 +26,10 @@ Một số hình ảnh:
 
 ![image](https://github.com/hudzg/dictionary/assets/106372669/fd6c4950-3b43-47df-8c3e-aa18ef79d778)
 
+Cây kế thừa:
+![DictionaryApplication](https://github.com/hudzg/dictionary/assets/106372669/e04c7d1b-ebeb-41bb-a444-ce153e49e217)
+
+
 
 
 
